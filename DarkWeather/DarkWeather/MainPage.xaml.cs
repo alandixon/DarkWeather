@@ -21,6 +21,7 @@ namespace DarkWeather
             BindingContext = model;
 
             Log.Debug(logTag, "MainPage started", true);
+
         }
 
         public void RefreshClicked(object sender, EventArgs args)
@@ -38,5 +39,12 @@ namespace DarkWeather
             model.ApiKeyHasChanged = true;
         }
 
+        private void RefreshDelayPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (model != null)
+            {
+                model.RefreshDelayString = (sender as Picker).SelectedItem.ToString();
+            }
+        }
     }
 }

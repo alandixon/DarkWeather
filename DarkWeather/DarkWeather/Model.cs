@@ -23,6 +23,8 @@ namespace DarkWeather
 
         private Db.DataTransfer db = null;
 
+        private int currentRefreshDelayMinutes = 5;
+
         public Model()
         {
             // Wire up location updates
@@ -49,8 +51,7 @@ namespace DarkWeather
             DataLabelText = "Waiting for data";
 
             // Start the timer for calling the DarkSky API
-            // Currently 5 minutes
-            Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 5, 0), ApiCallTimerTick);
+            Device.StartTimer(new TimeSpan(0, currentRefreshDelayMinutes, 0), ApiCallTimerTick);
 
             // Wait 3 seconds for location and api key to stabilise
             Task.Delay(3000).ContinueWith((t) =>
@@ -63,11 +64,22 @@ namespace DarkWeather
 
         #region Methods
 
-        /// <summary> Called when the api call timer ticks </summary>
+        /// <summary> Called when the api call timer ticks. Check for new time value </summary>
         /// <returns>true for the timer to keep recurring</returns>
         private bool ApiCallTimerTick()
         {
             RefreshFromDarkSky();
+
+            if (currentRefreshDelayMinutes != RefreshDelayMinutes)
+            {
+                Log.Debug(logTag, string.Format("API refresh rate changed from {0} to {1} minutes", currentRefreshDelayMinutes, RefreshDelayMinutes), true);
+                currentRefreshDelayMinutes = RefreshDelayMinutes;
+                // Create a new timer
+                Device.StartTimer(new TimeSpan(0, currentRefreshDelayMinutes, 0), ApiCallTimerTick);
+                // and don't restart this one
+                return false;
+            }
+            // No changes, just restart this timer
             return true;
         }
 
@@ -401,6 +413,33 @@ namespace DarkWeather
             {
                 location = value;
                 NotifyPropertyChanged("Location");
+            }
+        }
+
+        private string refreshDelayString = "5 minutes";
+        public string RefreshDelayString
+        {
+            get
+            {
+                return refreshDelayString;
+            }
+            set
+            {
+                refreshDelayString = value;
+                // NotifyPropertyChanged("RefreshDelayString");
+            }
+        }
+
+        /// <summary> Int value extracted from RefreshDelayString </summary>
+        public int RefreshDelayMinutes {
+            get
+            {
+                int newRefreshDelayMinutes;
+                if (int.TryParse((RefreshDelayString.Split(new char[] { ' ' })[0]), out newRefreshDelayMinutes))
+                {
+                    return newRefreshDelayMinutes;
+                }
+                return currentRefreshDelayMinutes;
             }
         }
 
