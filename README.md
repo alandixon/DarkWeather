@@ -4,7 +4,7 @@ An experimental app using the API from https://darksky.net
 
 ## Requirements
 
-* Minimum Androd version - TBD
+* Minimum Androd version - 4.0.3 (API level 15)
 
 * An API key from DarkSky: https://darksky.net/dev/
 
