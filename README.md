@@ -2,6 +2,12 @@
 
 An experimental app using the API from https://darksky.net
 
+One hour           |  Forty-eight hour
+:-------------------------:|:-------------------------:
+![One hour](https://github.com/alandixon/DarkWeather/blob/master/Images/OneHourRainfallExample.JPG)  |  ![48 hour](https://github.com/alandixon/DarkWeather/blob/master/Images/FortyEightHourRainfallExample.JPG)
+
+
+
 ## Requirements
 
 * Minimum Android version - 4.0.3 (API level 15)
