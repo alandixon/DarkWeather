@@ -9,9 +9,13 @@ namespace DarkWeather.Weather
         public DateTime Time { get; set; }
         public float PrecipitationIntensity { get; set; }
         public float PrecipitationProbability { get; set; }
+        public float TemperatureF { get; set; }
+        public float TemperatureC { get; set; }
+        public float CloudCover { get; set; }
 
-        // According to DarkSky, this can be one of "rain", "snow", or "sleet" or undefined if precipIntensity is zero
-        // See https://darksky.net/dev/docs/response#data-point
+
+        //According to DarkSky, this can be one of "rain", "snow", or "sleet" or undefined if precipIntensity is zero
+        //See https://darksky.net/dev/docs/response#data-point
         public string PrecipitationType { get; set; }
 
         public AbsoluteTimeHourDataPoint() { }
@@ -39,7 +43,10 @@ namespace DarkWeather.Weather
                 Time = hourDataPoint.Time.DateTime,
                 PrecipitationIntensity = hourDataPoint.PrecipitationIntensity,
                 PrecipitationProbability = hourDataPoint.PrecipitationProbability,
-                PrecipitationType = hourDataPoint.PrecipitationType
+                PrecipitationType = hourDataPoint.PrecipitationType,
+                TemperatureF = hourDataPoint.Temperature,
+                TemperatureC = (hourDataPoint.Temperature - 32) * 5 / 9,
+                CloudCover = hourDataPoint.CloudCover
             };
             return absoluteTimeHourDataPoint;
         }
