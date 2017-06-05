@@ -241,6 +241,7 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Secure.cs" />
+    <Compile Include="Version\Version.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\DarkWeather\app.config">
