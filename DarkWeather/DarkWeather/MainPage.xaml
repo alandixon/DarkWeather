@@ -58,7 +58,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="65"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
@@ -69,13 +69,41 @@
                 <Label Margin="10,0" Text="48 hour weather" HorizontalOptions="Start" />
                 <Label Margin="10,0" Text="{Binding DataLabelText}" HorizontalOptions="End" />
             </StackLayout>
+            
             <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Fill">
-                    <Label Margin="6,0" Text="Cloud" TextColor="Gray" Font="Bold" HorizontalOptions="End"/>
-                    <Label Margin="6,0" Text="Sun" TextColor="Yellow" Font="Bold" HorizontalOptions="End"/>
-                    <Label Margin="6,0" Text="Rain Likelihood" TextColor="DodgerBlue" Font="Bold" HorizontalOptions="Start" />
-                    <Label Margin="6,0" Text="Intensity" TextColor="MediumBlue" Font="Bold" HorizontalOptions="End"/>
-                    <Label Margin="6,0" Text="Temp °C" TextColor="Red" Font="Bold" HorizontalOptions="End"/>
+
+                <StackLayout Margin="4,0" Padding="1" BackgroundColor="DarkGray">
+                    <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
+                        <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
+                            <Label Text="Cloud" TextColor="Gray" Font="Bold" HorizontalOptions="End" />
+                            <Label Text="Sun" TextColor="Yellow" Font="Bold" HorizontalOptions="End" />
+                            <Switch IsToggled="{Binding SunCloudEnabled}"/>
+                        </StackLayout>
+                    </StackLayout>
                 </StackLayout>
+
+                    <StackLayout Margin="4,0" Padding="1" BackgroundColor="DarkGray">
+                    <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
+                        <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
+                            <Label Margin="3,0" Text="Rain Likelihood" TextColor="DodgerBlue" Font="Bold" HorizontalOptions="End"/>
+                            <Label Margin="3,0" Text="Intensity" TextColor="MediumBlue" Font="Bold" HorizontalOptions="End"/>
+                            <Switch IsToggled="{Binding RainEnabled}" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Margin="4,0" Padding="1" BackgroundColor="DarkGray">
+                    <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
+                        <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
+                            <Label Margin="3,0" Text="Temp °C" TextColor="Red" Font="Bold" HorizontalOptions="End"/>
+                            <Label Margin="3,0" Text="Apparent" TextColor="Orange" Font="Bold" HorizontalOptions="End"/>
+                            <Switch IsToggled="{Binding TempEnabled}" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+                
+            </StackLayout>
+            
             <chart:SfChart Grid.Row="2" >
                 <chart:SfChart.PrimaryAxis>
                     <chart:DateTimeAxis IntervalType="Hours" Interval="12" >
@@ -88,30 +116,30 @@
                     <chart:NumericalAxis Minimum="0" Maximum="1" IsInversed="true">
                     </chart:NumericalAxis>
                 </chart:SfChart.SecondaryAxis>
-                    <chart:SplineAreaSeries Color="Yellow" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="Sun"/>
-                    <chart:SplineAreaSeries Color="Gray" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="CloudCover"/>
-                    <chart:SplineAreaSeries Color="DodgerBlue" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationProbability" />
-                <chart:SplineSeries Color="MediumBlue" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationIntensity" />
+                <chart:SplineAreaSeries Color="Yellow" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="Sun" IsVisible="{Binding SunCloudEnabled}"/>
+                <chart:SplineAreaSeries Color="Gray" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="CloudCover" IsVisible="{Binding SunCloudEnabled}" />
+                <chart:SplineAreaSeries Color="DodgerBlue" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationProbability" IsVisible="{Binding RainEnabled}" />
+                <chart:SplineSeries Color="MediumBlue" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationIntensity" IsVisible="{Binding RainEnabled}" />
 
-                    <!--https://www.syncfusion.com/forums/127661/multiple-axis-for-multiple-series-->
-                <chart:SplineSeries Color="Red" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="TemperatureC">
-                    <chart:SplineSeries.YAxis>
-                        <chart:NumericalAxis OpposedPosition="True">
-                            <chart:NumericalAxis.LabelStyle>
-                                <chart:ChartAxisLabelStyle TextColor="Red">
-                                    <!-- Trying to embolden the (red) Temp axis labels from here: -->
-                                    <!-- https://help.syncfusion.com/xamarin/sfchart/axis#label-customization -->
-                                    <!-- but it's not working -->
-                                    <!--<chart:ChartAxisLabelStyle.Font>
+                <!--https://www.syncfusion.com/forums/127661/multiple-axis-for-multiple-series-->
+                    <chart:SplineSeries Color="Red" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="TemperatureC" IsVisible="{Binding TempEnabled}">
+                        <chart:SplineSeries.YAxis >
+                            <chart:NumericalAxis OpposedPosition="True">
+                                <chart:NumericalAxis.LabelStyle>
+                                    <chart:ChartAxisLabelStyle TextColor="Red">
+                                        <!-- Trying to embolden the (red) Temp axis labels from here: -->
+                                        <!-- https://help.syncfusion.com/xamarin/sfchart/axis#label-customization -->
+                                        <!-- but it's not working -->
+                                        <!--<chart:ChartAxisLabelStyle.Font>
                                         <Font FontAttributes ="Bold" />
                                     </chart:ChartAxisLabelStyle.Font>-->
-                                </chart:ChartAxisLabelStyle>                                    
-                            </chart:NumericalAxis.LabelStyle>
-                        </chart:NumericalAxis>
-                    </chart:SplineSeries.YAxis>
-                </chart:SplineSeries>
-                
-            </chart:SfChart>
+                                    </chart:ChartAxisLabelStyle>
+                                </chart:NumericalAxis.LabelStyle>
+                            </chart:NumericalAxis>
+                        </chart:SplineSeries.YAxis>
+                    </chart:SplineSeries>
+
+                </chart:SfChart>
             <Label Grid.Row="3" Margin="25,0" Text="" Font="Bold" HorizontalOptions="Start" />
         </Grid>
     </ContentPage>
