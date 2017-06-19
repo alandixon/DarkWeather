@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DarkWeather"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:navigationdrawer="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms"
              x:Class="DarkWeather.MainPage">
   <TabbedPage.Children>
 
-    <ContentPage Title="1 hour">
+        <ContentPage Title="1 hour">
         <ContentPage.Resources>
             <ResourceDictionary>
                 <local:InverseBooleanConverter x:Key="boolInverter"/>
@@ -55,7 +56,16 @@
                 <local:InverseBooleanConverter x:Key="boolInverter"/>
             </ResourceDictionary>
         </ContentPage.Resources>
-        <Grid>
+
+
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <navigationdrawer:SfNavigationDrawer x:Name="navigationDrawer" DrawerWidth ="200"/>
+            </StackLayout>
+
+
+
+
+            <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="65"/>
