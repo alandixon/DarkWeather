@@ -3,19 +3,61 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DarkWeather"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
-             xmlns:navigationdrawer="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms"
+             xmlns:navigation="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms"
              x:Class="DarkWeather.MainPage">
-  <TabbedPage.Children>
+    <TabbedPage.Children>
 
         <ContentPage Title="1 hour">
-        <ContentPage.Resources>
+            <ContentPage.Resources>
             <ResourceDictionary>
                 <local:InverseBooleanConverter x:Key="boolInverter"/>
             </ResourceDictionary>
         </ContentPage.Resources>
-        <Grid>
+
+
+
+            <!--You are here-->
+            <!--https://www.syncfusion.com/kb/7639/how-to-add-navigationdrawer-inside-the-tabbed-page-->
+
+            <navigation:SfNavigationDrawer x:Name="navigationDrawer1" BackgroundColor="White" TouchThreshold="100" Position="Left" DrawerWidth="200" DrawerHeaderHeight="50" DrawerFooterHeight="50">
+
+                <navigation:SfNavigationDrawer.ContentView>
+                    <StackLayout>
+                        <Label Text="First Page" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Button x:Name="bt" Text="Click" VerticalOptions="Center" HorizontalOptions="Center" ></Button>
+                    </StackLayout>
+                </navigation:SfNavigationDrawer.ContentView>
+
+                <navigation:SfNavigationDrawer.DrawerHeaderView>
+                    <Grid x:Name="headerLayout" BackgroundColor="#1aa1d6" >
+                        <Label x:Name="header"  Text="Header View" FontSize="14" TextColor="White"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  />
+                    </Grid>
+                </navigation:SfNavigationDrawer.DrawerHeaderView>
+
+                <navigation:SfNavigationDrawer.DrawerFooterView>
+                    <Grid x:Name="FooterLayout" BackgroundColor="#1aa1d6" >
+                        <Label x:Name="Footer"  Text="Footer View" FontSize="14" TextColor="White"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  />
+                    </Grid>
+                </navigation:SfNavigationDrawer.DrawerFooterView>
+
+                <navigation:SfNavigationDrawer.DrawerContentView>
+                    <Grid x:Name="contentLayout" >
+                        <Label x:Name="content"  Text="Content View" FontSize="14" TextColor="White"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  />
+                    </Grid>
+                </navigation:SfNavigationDrawer.DrawerContentView>
+
+            </navigation:SfNavigationDrawer>
+
+
+
+
+
+
+
+
+            <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="30"/>
@@ -26,6 +68,18 @@
                 <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Fill">
                     <Label Margin="10,0" Text="Rainfall in the next hour" HorizontalOptions="Start" />
                     <Label Margin="10,0" Text="{Binding DataLabelText}" HorizontalOptions="End" />
+                    
+                   <!--Used an image here:
+                    https://stackoverflow.com/questions/37294834/how-to-fill-a-button-with-an-image-in-xamarin-forms/37295604#37295604
+                    might be better to use a proper button
+                    and get some automatic animation -->                     
+                    <Image Source="Hamburger50.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="hamburgerButton_Clicked"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    
                 </StackLayout>
                 <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Fill">
                     <Label Margin="10,0" Text="Likelihood" TextColor="DodgerBlue" Font="Bold" HorizontalOptions="Start" />
@@ -48,7 +102,8 @@
             </chart:SfChart>
             <Label Grid.Row="3" Margin="25,0" Text="" Font="Bold" HorizontalOptions="Start" />
         </Grid>
-    </ContentPage>
+
+        </ContentPage>
 
     <ContentPage Title="48 hour">
         <ContentPage.Resources>
@@ -56,13 +111,6 @@
                 <local:InverseBooleanConverter x:Key="boolInverter"/>
             </ResourceDictionary>
         </ContentPage.Resources>
-
-
-            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                <navigationdrawer:SfNavigationDrawer x:Name="navigationDrawer" DrawerWidth ="200"/>
-            </StackLayout>
-
-
 
 
             <Grid>
