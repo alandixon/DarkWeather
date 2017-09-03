@@ -5461,16 +5461,13 @@ namespace DarkWeather.Droid
 			public const int select_dialog_singlechoice_material = 2130903109;
 			
 			// aapt resource value: 0x7f030046
-			public const int sfnavigationdrawer_layout = 2130903110;
+			public const int support_simple_spinner_dropdown_item = 2130903110;
 			
 			// aapt resource value: 0x7f030047
-			public const int support_simple_spinner_dropdown_item = 2130903111;
+			public const int Tabbar = 2130903111;
 			
 			// aapt resource value: 0x7f030048
-			public const int Tabbar = 2130903112;
-			
-			// aapt resource value: 0x7f030049
-			public const int Toolbar = 2130903113;
+			public const int Toolbar = 2130903112;
 			
 			static Layout()
 			{
