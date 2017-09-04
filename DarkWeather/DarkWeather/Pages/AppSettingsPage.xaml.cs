@@ -9,44 +9,41 @@ namespace DarkWeather
         private ILog Log = DependencyService.Get<ILog>();
         private string logTag = typeof(AppSettingsPage).FullName;
 
-        private Model model;
-
         public AppSettingsPage()
         {
             InitializeComponent();
 
-            //Settings.EnableLabelUri(poweredByLabel);
-            //Settings.EnableLabelUri(faqLabel);
+            Settings.EnableLabelUri(poweredByLabel);
+            Settings.EnableLabelUri(faqLabel);
 
-            model = new Model();
-            BindingContext = model;
+            BindingContext = Global.Model;
 
-            Log.Debug(logTag, "MainPage started", true);
+            Log.Debug(logTag, "AppSettingsPage started", true);
 
         }
 
-        //public void RefreshClicked(object sender, EventArgs args)
-        //{
-        //    model.RefreshFromDarkSky();
-        //}
+        public void RefreshClicked(object sender, EventArgs args)
+        {
+            Global.Model.RefreshFromDarkSky();
+        }
 
-        //public void SaveApiKeyClicked(object sender, EventArgs args)
-        //{
-        //    model.SaveApiKey(apiKey.Text);
-        //}
+        public void SaveApiKeyClicked(object sender, EventArgs args)
+        {
+            Global.Model.SaveApiKey(apiKey.Text);
+        }
 
-        //public void ApiKeyChanged(object sender, EventArgs args)
-        //{
-        //    model.ApiKeyHasChanged = true;
-        //}
+        public void ApiKeyChanged(object sender, EventArgs args)
+        {
+            Global.Model.ApiKeyHasChanged = true;
+        }
 
-        //private void RefreshDelayPicker_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (model != null)
-        //    {
-        //        model.RefreshDelayString = (sender as Picker).SelectedItem.ToString();
-        //    }
-        //}
+        private void RefreshDelayPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Global.Model != null)
+            {
+                Global.Model.RefreshDelayString = (sender as Picker).SelectedItem.ToString();
+            }
+        }
 
     }
 }

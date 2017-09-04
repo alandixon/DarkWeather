@@ -16,6 +16,8 @@
         public static AppSettingsPage AppSettingsPage { get; set; }
         public static FortyEightHourPage FortyEightHourPage { get; set; }
 
+        public static Model Model { get; set; }
+
     }
 
 }

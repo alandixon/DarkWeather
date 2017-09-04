@@ -15,12 +15,12 @@ namespace DarkWeather
         {
             InitializeComponent();
 
+            Global.Model = new Model();
+            BindingContext = Global.Model;
+
             Global.OneHourPage = this;
             Global.AppSettingsPage = new AppSettingsPage();
             Global.FortyEightHourPage = new FortyEightHourPage();
-
-            model = new Model();
-            BindingContext = model;
 
             Log.Debug(logTag, "MainPage started", true);
 
