@@ -4,25 +4,25 @@ using Xamarin.Forms;
 
 namespace DarkWeather
 {
-    public partial class OneHourPage : ContentPage
+    public partial class HomePage : ContentPage
     {
         private ILog Log = DependencyService.Get<ILog>();
-        private string logTag = typeof(OneHourPage).FullName;
+        private string logTag = typeof(HomePage).FullName;
 
         private Model model;
 
-        public OneHourPage()
+        public HomePage()
         {
             InitializeComponent();
 
             Global.Model = new Model();
             BindingContext = Global.Model;
 
-            Global.OneHourPage = this;
+            Global.HomePage = this;
             Global.AppSettingsPage = new AppSettingsPage();
             Global.FortyEightHourPage = new FortyEightHourPage();
 
-            Log.Debug(logTag, "MainPage started", true);
+            Log.Debug(logTag, "HomePage started", true);
 
         }
 

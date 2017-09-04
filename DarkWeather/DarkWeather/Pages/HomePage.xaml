@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DarkWeather"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
-             x:Class="DarkWeather.OneHourPage"
+             x:Class="DarkWeather.HomePage"
              Title="1 hour">
 
     <ContentPage.Resources>
