@@ -12,8 +12,7 @@ namespace DarkWeather
         public App()
         {
             InitializeComponent();
-
-            MainPage = new DarkWeather.MainPage();
+            MainPage = new NavigationPage(new OneHourPage());
         }
 
         protected override void OnStart()

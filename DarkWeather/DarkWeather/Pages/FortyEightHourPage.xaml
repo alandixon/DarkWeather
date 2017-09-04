@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DarkWeather"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
-             x:Class="DarkWeather.MediumTermPage"
+             x:Class="DarkWeather.FortyEightHourPage"
              Title="48 hour">
 
     <ContentPage.Resources>
