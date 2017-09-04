@@ -12,7 +12,7 @@ One hour: lots of rain           |  48 hour: starts rainy and then clears up
 
 ## Requirements
 
-* Minimum Android version - 4.0.3 (API level 15)
+* Minimum Android version: 6.0 (API level 23). This is somewhat arbitray - I just selected it in the droid project settings.
 
 * An API key from DarkSky: https://darksky.net/dev/
 

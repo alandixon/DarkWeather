@@ -4,14 +4,14 @@ using Xamarin.Forms;
 
 namespace DarkWeather
 {
-    public partial class MainPage : ContentPage
+    public partial class SettingsPage : ContentPage
     {
         private ILog Log = DependencyService.Get<ILog>();
         private string logTag = typeof(MainPage).FullName;
 
         private Model model;
 
-        public MainPage()
+        public SettingsPage()
         {
             InitializeComponent();
 
