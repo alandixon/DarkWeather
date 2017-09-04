@@ -9,6 +9,7 @@ namespace DarkWeather
             InitializeComponent();
             MasterBehavior = MasterBehavior.Popover;
         }
+        
     }
 }
 
