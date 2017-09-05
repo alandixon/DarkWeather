@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effects="clr-namespace:DarkWeather;assembly=DarkWeather"
              x:Class="DarkWeather.MenuPage" BackgroundColor="Transparent">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
@@ -15,7 +16,11 @@
                     <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
                         <Label Text="Cloud" TextColor="Gray" Font="Bold" />
                         <Label Text="Sun" TextColor="Yellow" Font="Bold" />
-                        <Switch IsToggled="{Binding SunCloudEnabled}" HorizontalOptions="Start" />
+                        <Switch IsToggled="{Binding SunCloudEnabled}" HorizontalOptions="Start"
+                                effects:ChangeColorSwitchEffect.TrueColor="Lime" 
+                                effects:ChangeColorSwitchEffect.FalseColor="Aqua"
+                                effects:ChangeColorSwitchEffect.ThumbColor="Blue"
+                         />
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
@@ -25,7 +30,12 @@
                     <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
                         <Label Margin="3,0" Text="Rain Likelihood" TextColor="DodgerBlue" Font="Bold" />
                         <Label Margin="3,0" Text="Intensity" TextColor="MediumBlue" Font="Bold" />
-                        <Switch IsToggled="{Binding RainEnabled}" HorizontalOptions="Start" />
+                        <Switch IsToggled="{Binding RainEnabled}" HorizontalOptions="Start"
+                                effects:ChangeColorSwitchEffect.TrueColor="Lime" 
+                                effects:ChangeColorSwitchEffect.FalseColor="Aqua"
+                                effects:ChangeColorSwitchEffect.ThumbColor="Blue"
+                         />
+
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
@@ -35,7 +45,12 @@
                     <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
                         <Label Margin="3,0" Text="Temp °C" TextColor="Red" Font="Bold" />
                         <Label Margin="3,0" Text="Apparent" TextColor="Orange" Font="Bold" />
-                        <Switch IsToggled="{Binding TempEnabled}" HorizontalOptions="Start" />
+                        <Switch IsToggled="{Binding TempEnabled}" HorizontalOptions="Start"
+                                effects:ChangeColorSwitchEffect.TrueColor="Lime" 
+                                effects:ChangeColorSwitchEffect.FalseColor="Aqua"
+                                effects:ChangeColorSwitchEffect.ThumbColor="Blue"
+                         />
+
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

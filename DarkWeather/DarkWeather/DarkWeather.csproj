@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Effects\ChangeColorSwitchEffect.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Db\Database.cs" />
