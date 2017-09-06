@@ -12,8 +12,8 @@ namespace DarkWeather
         public FortyEightHourPage()
         {
             InitializeComponent();
-
-            BindingContext = Global.Model;
+            App.FortyEightHourPageVM = new FortyEightHourPageVM(App.Model);
+            BindingContext = App.FortyEightHourPageVM;
 
             Log.Debug(logTag, "FortyEightHourPage started", true);
 
@@ -21,7 +21,7 @@ namespace DarkWeather
 
         private void AppSettings_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(Global.AppSettingsPage);
+            Navigation.PushAsync(App.AppSettingsPage);
         }
 
         private void OneHour_Clicked(object sender, EventArgs e)

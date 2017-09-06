@@ -3,14 +3,15 @@ using Xamarin.Forms;
 
 namespace DarkWeather
 {
-    public partial class MenuPage : ContentPage
+    public partial class FortyEightHourMenuPage : ContentPage
     {
         public event EventHandler<bool> IsPresentedChange;
 
-        public MenuPage()
+        public FortyEightHourMenuPage()
         {
             Title = "Menu";
             InitializeComponent();
+            BindingContext = App.FortyEightHourPageVM;
         }
 
         private void Done_Clicked(object sender, EventArgs e)

@@ -53,15 +53,18 @@
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model.cs" />
+    <Compile Include="Model\Model.cs" />
     <Compile Include="Pages\AppSettingsPage.xaml.cs">
       <DependentUpon>AppSettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\FortyEightHourPage.xaml.cs">
       <DependentUpon>FortyEightHourPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MenuPage.xaml.cs">
-      <DependentUpon>MenuPage.xaml</DependentUpon>
+    <Compile Include="Pages\FortyEightHourMenuPage.xaml.cs">
+      <DependentUpon>FortyEightHourMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HomeMenuPage.xaml.cs">
+      <DependentUpon>HomeMenuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RootPage.xaml.cs">
       <DependentUpon>RootPage.xaml</DependentUpon>
@@ -77,6 +80,8 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Utilities\Factory.cs" />
     <Compile Include="Version\IVersion.cs" />
+    <Compile Include="ViewModels\FortyEightHourPageVM.cs" />
+    <Compile Include="ViewModels\HomePageVM.cs" />
     <Compile Include="Weather\AbsoluteTimeHourDataPoint.cs" />
     <Compile Include="Weather\AbsoluteTimeMinuteDataPoint.cs" />
     <Compile Include="Weather\Currently.cs" />
@@ -196,13 +201,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\MenuPage.xaml">
+    <EmbeddedResource Include="Pages\HomeMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\RootPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\FortyEightHourMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
