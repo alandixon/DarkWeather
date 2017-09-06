@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DarkWeather
+﻿namespace DarkWeather
 {
-    public class HomePageVM
+    public class HomePageVM : PageVM
     {
+        public HomePageVM(Model model) : base(model)
+        {
+            SunCloudEnabled = true;
+            RainEnabled = true;
+            TempEnabled = true;
+        }
     }
 }
