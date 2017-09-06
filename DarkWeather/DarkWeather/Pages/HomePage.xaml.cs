@@ -33,8 +33,8 @@ namespace DarkWeather
 
         private void FortyEightHour_Clicked(object sender, EventArgs e)
         {
-            App.RootPage.Detail = App.FortyEightHourNavigationPage;
-        }
+            App.RootPage.Master = App.FortyEightHourMenuPage;
+            App.RootPage.Detail = App.FortyEightHourNavigationPage;        }
 
     }
 }
