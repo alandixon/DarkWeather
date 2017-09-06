@@ -16,7 +16,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
@@ -30,8 +30,7 @@
         </StackLayout>
 
         <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Fill">
-            <Label Margin="10,0" Text="Rainfall in the next hour" HorizontalOptions="Start" />
-            <Label Margin="10,0" Text="{Binding Model.DataLabelText}" HorizontalOptions="End" />
+            <Label Margin="10,0" Text="{Binding Model.SummaryCurrent}" HorizontalOptions="Start" IsVisible="{Binding CurrentSummaryEnabled}"/>
         </StackLayout>
 
         <chart:SfChart Grid.Row="2" >
@@ -49,8 +48,11 @@
             <chart:SplineAreaSeries Color="DodgerBlue" ItemsSource="{Binding Model.RainfallMinutes}" XBindingPath="Time" YBindingPath="PrecipitationProbability"/>
             <chart:SplineSeries Color="MediumBlue" ItemsSource="{Binding Model.RainfallMinutes}" XBindingPath="Time" YBindingPath="PrecipitationIntensity"/>
         </chart:SfChart>
-        
-        <Label Grid.Row="3" Margin="25,0" Text="" Font="Bold" HorizontalOptions="Start" />
+
+        <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="Fill">
+            <Label Margin="10,0" Text="{Binding Model.DataLabelText}" HorizontalOptions="Start" />
+        </StackLayout>
+
     </Grid>
 
 </ContentPage>

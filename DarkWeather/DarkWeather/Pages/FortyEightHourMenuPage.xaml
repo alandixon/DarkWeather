@@ -13,6 +13,15 @@
             <StackLayout Margin="4,4,4,0" Padding="1" BackgroundColor="DarkGray" >
                 <StackLayout Orientation="Vertical" BackgroundColor="LightGray">
                     <StackLayout Orientation="Horizontal" Spacing="1" Padding="1">
+                        <Label Text="Summary" TextColor="Gray" Font="Bold" HorizontalOptions="Start"/>
+                    </StackLayout>
+                    <Switch IsToggled="{Binding HourSummaryEnabled}" HorizontalOptions="Start" />
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Margin="4,4,4,0" Padding="1" BackgroundColor="DarkGray" >
+                <StackLayout Orientation="Vertical" BackgroundColor="LightGray">
+                    <StackLayout Orientation="Horizontal" Spacing="1" Padding="1">
                         <Label Text="Cloud" TextColor="Gray" Font="Bold" HorizontalOptions="Start"/>
                         <Label Text="Sun" TextColor="Yellow" Font="Bold" HorizontalOptions="End"/>
                     </StackLayout>
