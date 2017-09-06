@@ -15,51 +15,23 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="65"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Fill">
-            <Label Margin="10,0" Text="48 hour weather" HorizontalOptions="Start" />
-            <Label Margin="10,0" Text="{Binding DataLabelText}" HorizontalOptions="End" />
+
+        <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Fill" Padding="4,2,4,2">
+            <Button Text="1 Hour" Clicked="OneHour_Clicked" BackgroundColor="White" />
+            <Button Text="App settings" Clicked="AppSettings_Clicked" BackgroundColor="White" HorizontalOptions="EndAndExpand" />
         </StackLayout>
 
         <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Fill">
-
-            <StackLayout Margin="4,0" Padding="1" BackgroundColor="DarkGray">
-                <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
-                    <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
-                        <Label Text="Cloud" TextColor="Gray" Font="Bold" HorizontalOptions="End" />
-                        <Label Text="Sun" TextColor="Yellow" Font="Bold" HorizontalOptions="End" />
-                        <Switch IsToggled="{Binding SunCloudEnabled}"/>
-                    </StackLayout>
-                </StackLayout>
-            </StackLayout>
-
-            <StackLayout Margin="4,0" Padding="1" BackgroundColor="DarkGray">
-                <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
-                    <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
-                        <Label Margin="3,0" Text="Rain Likelihood" TextColor="DodgerBlue" Font="Bold" HorizontalOptions="End"/>
-                        <Label Margin="3,0" Text="Intensity" TextColor="MediumBlue" Font="Bold" HorizontalOptions="End"/>
-                        <Switch IsToggled="{Binding RainEnabled}" />
-                    </StackLayout>
-                </StackLayout>
-            </StackLayout>
-
-            <StackLayout Margin="4,0" Padding="1" BackgroundColor="DarkGray">
-                <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
-                    <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
-                        <Label Margin="3,0" Text="Temp °C" TextColor="Red" Font="Bold" HorizontalOptions="End"/>
-                        <Label Margin="3,0" Text="Apparent" TextColor="Orange" Font="Bold" HorizontalOptions="End"/>
-                        <Switch IsToggled="{Binding TempEnabled}" />
-                    </StackLayout>
-                </StackLayout>
-            </StackLayout>
-
+            <Label Margin="10,0" Text="48 hour weather" HorizontalOptions="Start" />
+            <Label Margin="10,0" Text="{Binding DataLabelText}" HorizontalOptions="End" />
         </StackLayout>
 
         <chart:SfChart Grid.Row="2" >

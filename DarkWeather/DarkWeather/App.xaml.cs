@@ -4,8 +4,14 @@ namespace DarkWeather
 {
     public partial class App : Application
     {
-        public static NavigationPage NavigationPage { get; private set; }
-        private static RootPage RootPage;
+        public static RootPage RootPage { get; set; }
+        private static MenuPage MenuPage { get; set; }
+
+        public static NavigationPage HomeNavigationPage { get; private set; }
+        public static NavigationPage FortyEightHourNavigationPage { get; private set; }
+
+        private static HomePage HomePage { get; set; }
+        private static FortyEightHourPage FortyEightHourPage { get; set; }
 
         public static bool MenuIsPresented
         {
@@ -19,34 +25,39 @@ namespace DarkWeather
             }
         }
 
-
-
         public App()
         {
             InitializeComponent();
-            NavigationPage = new NavigationPage(new HomePage());
+
+            HomePage = new HomePage();
+            FortyEightHourPage = new FortyEightHourPage();
+
             RootPage = new RootPage();
-            var menuPage = new MenuPage();
-            RootPage.Master = menuPage;
-            RootPage.Detail = NavigationPage;
-            MainPage = RootPage;
+            MenuPage = new MenuPage();
+            RootPage.Master = MenuPage;
             // Wire up IsPresented so that the menu page can close itself
-            menuPage.IsPresentedChange += MenuPage_IsPresentedChange;
+            MenuPage.IsPresentedChange += MenuPage_IsPresentedChange;
+
+            HomeNavigationPage = new NavigationPage(HomePage);
+            FortyEightHourNavigationPage = new NavigationPage(FortyEightHourPage);
+
+            // Start at home page
+            RootPage.Detail = HomeNavigationPage;
+
+            // and point the app at our root page
+            MainPage = RootPage;
         }
 
         protected override void OnStart()
         {
-            // Handle when your app starts
         }
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
         }
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
         }
 
         private void MenuPage_IsPresentedChange(object sender, bool isPresented)

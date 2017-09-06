@@ -19,5 +19,14 @@ namespace DarkWeather
 
         }
 
+        private void AppSettings_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(Global.AppSettingsPage);
+        }
+
+        private void OneHour_Clicked(object sender, EventArgs e)
+        {
+            App.RootPage.Detail = App.HomeNavigationPage;
+        }
     }
 }
