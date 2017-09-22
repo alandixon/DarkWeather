@@ -84,6 +84,8 @@
     <Compile Include="ViewModels\PageVM.cs" />
     <Compile Include="ViewModels\HomePageVM.cs" />
     <Compile Include="Weather\AbsoluteTimeHourDataPoint.cs" />
+    <Compile Include="Weather\AbsoluteTimeDayDataPoint.cs" />
+    <Compile Include="Weather\AbsoluteTimeDataPoint.cs" />
     <Compile Include="Weather\AbsoluteTimeMinuteDataPoint.cs" />
     <Compile Include="Weather\Currently.cs" />
     <Compile Include="Weather\Daily.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="Weather\Hourly.cs" />
     <Compile Include="Weather\IPrediction.cs" />
     <Compile Include="Weather\Minutely.cs" />
+    <Compile Include="Weather\Sun.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\HomePage.xaml">
