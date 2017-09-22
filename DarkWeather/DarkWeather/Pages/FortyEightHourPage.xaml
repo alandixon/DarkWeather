@@ -44,13 +44,13 @@
                 <chart:NumericalAxis Minimum="0" Maximum="1" IsInversed="true">
                 </chart:NumericalAxis>
             </chart:SfChart.SecondaryAxis>
-            <chart:SplineAreaSeries Color="Yellow" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="Time" YBindingPath="Sun.SunPercent" IsVisible="{Binding SunCloudEnabled}"/>
-            <chart:SplineAreaSeries Color="Gray" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="Time" YBindingPath="CloudCover" IsVisible="{Binding SunCloudEnabled}" />
-            <chart:SplineAreaSeries Color="DodgerBlue" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationProbability" IsVisible="{Binding RainEnabled}" />
-            <chart:SplineSeries Color="MediumBlue" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationIntensity" IsVisible="{Binding RainEnabled}" />
+            <chart:SplineAreaSeries Color="Yellow" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="Sun.SunPercent" IsVisible="{Binding SunCloudEnabled}"/>
+            <chart:SplineAreaSeries Color="Gray" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="CloudCover" IsVisible="{Binding SunCloudEnabled}" />
+            <chart:SplineAreaSeries Color="DodgerBlue" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="PrecipitationProbability" IsVisible="{Binding RainEnabled}" />
+            <chart:SplineSeries Color="MediumBlue" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="PrecipitationIntensity" IsVisible="{Binding RainEnabled}" />
 
             <!--https://www.syncfusion.com/forums/127661/multiple-axis-for-multiple-series-->
-            <chart:SplineSeries Color="Red" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="Time" YBindingPath="TemperatureC" IsVisible="{Binding TempEnabled}">
+            <chart:SplineSeries Color="Red" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="TemperatureC" IsVisible="{Binding TempEnabled}">
                 <chart:SplineSeries.YAxis >
                     <chart:NumericalAxis OpposedPosition="True">
                         <chart:NumericalAxis.LabelStyle>

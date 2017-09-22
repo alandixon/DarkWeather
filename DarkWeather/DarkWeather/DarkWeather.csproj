@@ -85,7 +85,6 @@
     <Compile Include="ViewModels\HomePageVM.cs" />
     <Compile Include="Weather\AbsoluteTimeHourDataPoint.cs" />
     <Compile Include="Weather\AbsoluteTimeDayDataPoint.cs" />
-    <Compile Include="Weather\AbsoluteTimeDataPoint.cs" />
     <Compile Include="Weather\AbsoluteTimeMinuteDataPoint.cs" />
     <Compile Include="Weather\Currently.cs" />
     <Compile Include="Weather\Daily.cs" />
