@@ -10,11 +10,14 @@ namespace DarkWeather.Weather
         PostSunset
     }
 
-    [DebuggerDisplay("SunState={SunState.ToString()} {SunPercent}%")]
+    [DebuggerDisplay("SunState={SunState.ToString()} SunRatio={SunRatio}")]
     public class Sun
     {
         public SunState SunState { get; set; }
 
-        public int SunPercent { get; set; }
+        /// <summary> 
+        /// 
+        /// </summary>
+        public float SunRatio { get; set; }
     }
 }

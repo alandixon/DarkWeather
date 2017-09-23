@@ -233,17 +233,17 @@ namespace DarkWeather
                         if (hourPoint.Time.TimeOfDay < dayPoint.SunriseTime.TimeOfDay)
                         {
                             hourPoint.Sun.SunState = SunState.PreSunrise;
-                            hourPoint.Sun.SunPercent = 0;
+                            hourPoint.Sun.SunRatio = 0;
                         }
                         else if (hourPoint.Time.TimeOfDay < dayPoint.SunsetTime.TimeOfDay)
                         {
                             hourPoint.Sun.SunState = SunState.SunUp;
-                            hourPoint.Sun.SunPercent = 100;
+                            hourPoint.Sun.SunRatio = 1;
                         }
                         else
                         {
                             hourPoint.Sun.SunState = SunState.PostSunset;
-                            hourPoint.Sun.SunPercent = 0;
+                            hourPoint.Sun.SunRatio = 0;
                         }
                     }
                 }
@@ -254,17 +254,17 @@ namespace DarkWeather
                         if (minutePoint.Time.TimeOfDay < dayPoint.SunriseTime.TimeOfDay)
                         {
                             minutePoint.Sun.SunState = SunState.PreSunrise;
-                            minutePoint.Sun.SunPercent = 0;
+                            minutePoint.Sun.SunRatio = 0;
                         }
                         else if (minutePoint.Time.TimeOfDay < dayPoint.SunsetTime.TimeOfDay)
                         {
                             minutePoint.Sun.SunState = SunState.SunUp;
-                            minutePoint.Sun.SunPercent = 100;
+                            minutePoint.Sun.SunRatio = 1;
                         }
                         else
                         {
                             minutePoint.Sun.SunState = SunState.PostSunset;
-                            minutePoint.Sun.SunPercent = 0;
+                            minutePoint.Sun.SunRatio = 0;
                         }
                     }
                 }
