@@ -228,14 +228,14 @@ namespace DarkWeather
             {
                 foreach (AbsoluteTimeHourDataPoint hourPoint in weatherHours)
                 {
-                    if (dayPoint.LocalTime.DayOfYear == hourPoint.LocalTime.DayOfYear)
+                    if (dayPoint.Time.DayOfYear == hourPoint.Time.DayOfYear)
                     {
-                        if (hourPoint.LocalTime < dayPoint.SunriseTime)
+                        if (hourPoint.Time.TimeOfDay < dayPoint.SunriseTime.TimeOfDay)
                         {
                             hourPoint.Sun.SunState = SunState.PreSunrise;
                             hourPoint.Sun.SunPercent = 0;
                         }
-                        else if (hourPoint.LocalTime < dayPoint.SunsetTime)
+                        else if (hourPoint.Time.TimeOfDay < dayPoint.SunsetTime.TimeOfDay)
                         {
                             hourPoint.Sun.SunState = SunState.SunUp;
                             hourPoint.Sun.SunPercent = 100;
@@ -249,14 +249,14 @@ namespace DarkWeather
                 }
                 foreach (AbsoluteTimeMinuteDataPoint minutePoint in weatherMinutes)
                 {
-                    if (dayPoint.LocalTime.DayOfYear == minutePoint.LocalTime.DayOfYear)
+                    if (dayPoint.Time.DayOfYear == minutePoint.Time.DayOfYear)
                     {
-                        if (minutePoint.LocalTime < dayPoint.SunriseTime)
+                        if (minutePoint.Time.TimeOfDay < dayPoint.SunriseTime.TimeOfDay)
                         {
                             minutePoint.Sun.SunState = SunState.PreSunrise;
                             minutePoint.Sun.SunPercent = 0;
                         }
-                        else if (minutePoint.LocalTime < dayPoint.SunsetTime)
+                        else if (minutePoint.Time.TimeOfDay < dayPoint.SunsetTime.TimeOfDay)
                         {
                             minutePoint.Sun.SunState = SunState.SunUp;
                             minutePoint.Sun.SunPercent = 100;

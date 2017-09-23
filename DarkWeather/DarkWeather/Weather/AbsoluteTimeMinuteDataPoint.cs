@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DarkWeather.Weather
 {
-    public class AbsoluteTimeMinuteDataPoint
+    public class AbsoluteTimeMinuteDataPoint : ISun
     {
         public DateTime Time { get; set; }
         public DateTime LocalTime { get; set; }

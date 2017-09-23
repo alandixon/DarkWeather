@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DarkWeather.Weather
 {
-    public class AbsoluteTimeHourDataPoint
+    public class AbsoluteTimeHourDataPoint : ISun
     {
         public static readonly int FortyEight = 48;
 
