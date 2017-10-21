@@ -232,18 +232,18 @@ namespace DarkWeather
                     {
                         if (hourPoint.Time.TimeOfDay < dayPoint.SunriseTime.TimeOfDay)
                         {
-                            hourPoint.Sun.SunState = SunState.PreSunrise;
-                            hourPoint.Sun.SunRatio = 0;
+                            hourPoint.DayCycle.SunState = SunState.PreSunrise;
+                            hourPoint.DayCycle.SunRatio = 0;
                         }
                         else if (hourPoint.Time.TimeOfDay < dayPoint.SunsetTime.TimeOfDay)
                         {
-                            hourPoint.Sun.SunState = SunState.SunUp;
-                            hourPoint.Sun.SunRatio = 1;
+                            hourPoint.DayCycle.SunState = SunState.SunUp;
+                            hourPoint.DayCycle.SunRatio = 1;
                         }
                         else
                         {
-                            hourPoint.Sun.SunState = SunState.PostSunset;
-                            hourPoint.Sun.SunRatio = 0;
+                            hourPoint.DayCycle.SunState = SunState.PostSunset;
+                            hourPoint.DayCycle.SunRatio = 0;
                         }
                     }
                 }
@@ -253,18 +253,18 @@ namespace DarkWeather
                     {
                         if (minutePoint.Time.TimeOfDay < dayPoint.SunriseTime.TimeOfDay)
                         {
-                            minutePoint.Sun.SunState = SunState.PreSunrise;
-                            minutePoint.Sun.SunRatio = 0;
+                            minutePoint.DayCycle.SunState = SunState.PreSunrise;
+                            minutePoint.DayCycle.SunRatio = 0;
                         }
                         else if (minutePoint.Time.TimeOfDay < dayPoint.SunsetTime.TimeOfDay)
                         {
-                            minutePoint.Sun.SunState = SunState.SunUp;
-                            minutePoint.Sun.SunRatio = 1;
+                            minutePoint.DayCycle.SunState = SunState.SunUp;
+                            minutePoint.DayCycle.SunRatio = 1;
                         }
                         else
                         {
-                            minutePoint.Sun.SunState = SunState.PostSunset;
-                            minutePoint.Sun.SunRatio = 0;
+                            minutePoint.DayCycle.SunState = SunState.PostSunset;
+                            minutePoint.DayCycle.SunRatio = 0;
                         }
                     }
                 }

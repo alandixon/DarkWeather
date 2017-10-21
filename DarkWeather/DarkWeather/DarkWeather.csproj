@@ -93,7 +93,7 @@
     <Compile Include="Weather\Flags.cs" />
     <Compile Include="Weather\Hourly.cs" />
     <Compile Include="Weather\IPrediction.cs" />
-    <Compile Include="Weather\ISun.cs" />
+    <Compile Include="Weather\IDayCycle.cs" />
     <Compile Include="Weather\Minutely.cs" />
     <Compile Include="Weather\Sun.cs" />
   </ItemGroup>

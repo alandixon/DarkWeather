@@ -15,7 +15,7 @@ namespace DarkWeather.Weather
         // See https://darksky.net/dev/docs/response#data-point
         public string PrecipitationType { get; set; }
 
-        public Sun Sun { get; set; }
+        public DayCycle DayCycle { get; set; }
 
         public DateTime SunriseTime { get; set; }
         public DateTime SunsetTime { get; set; }

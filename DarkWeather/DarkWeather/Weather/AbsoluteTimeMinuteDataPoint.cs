@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DarkWeather.Weather
 {
-    public class AbsoluteTimeMinuteDataPoint : ISun
+    public class AbsoluteTimeMinuteDataPoint : IDayCycle
     {
         public DateTime Time { get; set; }
         public DateTime LocalTime { get; set; }
@@ -15,11 +15,11 @@ namespace DarkWeather.Weather
         // See https://darksky.net/dev/docs/response#data-point
         public string PrecipitationType { get; set; }
 
-        public Sun Sun { get; set; }
+        public DayCycle DayCycle { get; set; }
 
         public AbsoluteTimeMinuteDataPoint()
         {
-            Sun = new Sun();
+            DayCycle = new DayCycle();
         }
 
         /// <summary> Convert offset time minutepoint list to absolute </summary>

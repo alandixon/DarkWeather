@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DarkWeather.Weather
 {
-    public class AbsoluteTimeHourDataPoint : ISun
+    public class AbsoluteTimeHourDataPoint : IDayCycle
     {
         public static readonly int FortyEight = 48;
 
@@ -23,11 +23,11 @@ namespace DarkWeather.Weather
         public float ApparentTemperatureC { get; set; }
         public float CloudCover { get; set; }
 
-        public Sun Sun { get; set; }
+        public DayCycle DayCycle { get; set; }
 
         public AbsoluteTimeHourDataPoint()
         {
-            Sun = new Sun();
+            DayCycle = new DayCycle();
         }
 
         /// <summary> Convert offset time hourpoint list to absolute </summary>

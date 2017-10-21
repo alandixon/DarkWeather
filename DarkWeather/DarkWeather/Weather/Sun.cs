@@ -11,7 +11,7 @@ namespace DarkWeather.Weather
     }
 
     [DebuggerDisplay("SunState={SunState.ToString()} SunRatio={SunRatio}")]
-    public class Sun
+    public class DayCycle
     {
         public SunState SunState { get; set; }
 

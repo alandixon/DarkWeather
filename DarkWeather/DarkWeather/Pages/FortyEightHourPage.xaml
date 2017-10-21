@@ -44,7 +44,7 @@
                 <chart:NumericalAxis Minimum="0" Maximum="1" IsInversed="true">
                 </chart:NumericalAxis>
             </chart:SfChart.SecondaryAxis>
-            <chart:SplineAreaSeries Color="Yellow" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="Sun.SunRatio" IsVisible="{Binding SunCloudEnabled}"/>
+            <chart:SplineAreaSeries Color="Yellow" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="DayCycle.SunRatio" IsVisible="{Binding SunCloudEnabled}"/>
             <chart:SplineAreaSeries Color="Gray" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="CloudCover" IsVisible="{Binding SunCloudEnabled}" />
             <chart:SplineAreaSeries Color="DodgerBlue" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="PrecipitationProbability" IsVisible="{Binding RainEnabled}" />
             <chart:SplineSeries Color="MediumBlue" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="PrecipitationIntensity" IsVisible="{Binding RainEnabled}" />
