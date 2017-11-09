@@ -24,6 +24,7 @@ namespace DarkWeather.Weather
         public float ApparentTemperatureF { get; set; }
         public float ApparentTemperatureC { get; set; }
         public float CloudCover { get; set; }
+        public float WindSpeed { get; set; }
 
         public DayCycle DayCycle { get; set; }
 
@@ -61,7 +62,8 @@ namespace DarkWeather.Weather
                 TemperatureC = (hourDataPoint.Temperature - 32) * 5 / 9,
                 ApparentTemperatureF = hourDataPoint.ApparentTemperature,
                 ApparentTemperatureC = (hourDataPoint.ApparentTemperature - 32) * 5 / 9,
-                CloudCover = hourDataPoint.CloudCover
+                CloudCover = hourDataPoint.CloudCover,
+                WindSpeed = hourDataPoint.WindSpeed
             };
             return absoluteTimeHourDataPoint;
         }

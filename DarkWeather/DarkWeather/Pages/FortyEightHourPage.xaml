@@ -41,8 +41,7 @@
                 </chart:DateTimeAxis>
             </chart:SfChart.PrimaryAxis>
             <chart:SfChart.SecondaryAxis>
-                <chart:NumericalAxis Minimum="0" Maximum="1" IsInversed="true">
-                </chart:NumericalAxis>
+                <chart:NumericalAxis Minimum="0" Maximum="1" IsInversed="true" IsVisible="False" />
             </chart:SfChart.SecondaryAxis>
             <chart:StepAreaSeries Color="Gray" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="DayCycle.DarkRatio" IsVisible="{Binding SunCloudEnabled}"/>
             <chart:StepAreaSeries Color="Yellow" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="DayCycle.SunRatio" IsVisible="{Binding SunCloudEnabled}"/>
@@ -60,9 +59,19 @@
                                 <!-- https://help.syncfusion.com/xamarin/sfchart/axis#label-customization -->
                                 <!-- but it's not working -->
                                 <!--<chart:ChartAxisLabelStyle.Font>
-                                        <Font FontAttributes ="Bold" />
-                                    </chart:ChartAxisLabelStyle.Font>-->
+                                    <Font FontAttributes ="Bold" />
+                                </chart:ChartAxisLabelStyle.Font>-->
                             </chart:ChartAxisLabelStyle>
+                        </chart:NumericalAxis.LabelStyle>
+                    </chart:NumericalAxis>
+                </chart:SplineSeries.YAxis>
+            </chart:SplineSeries>
+
+            <chart:SplineSeries Color="LimeGreen" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="WindSpeed" IsVisible="{Binding TempEnabled}">
+                <chart:SplineSeries.YAxis >
+                    <chart:NumericalAxis OpposedPosition="False">
+                        <chart:NumericalAxis.LabelStyle>
+                            <chart:ChartAxisLabelStyle TextColor="Green"/>
                         </chart:NumericalAxis.LabelStyle>
                     </chart:NumericalAxis>
                 </chart:SplineSeries.YAxis>
