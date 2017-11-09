@@ -1,9 +1,11 @@
 ﻿using DarkSkyApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace DarkWeather.Weather
 {
+    [DebuggerDisplay("UTC={Time.ToString(\"ddd dd HH:mm:ss\")} Local={LocalTime.ToString(\"ddd dd HH:mm:ss\")} Precip Int/Prob={PrecipitationIntensity}/{PrecipitationProbability}")]
     public class AbsoluteTimeHourDataPoint : IDayCycle
     {
         public static readonly int FortyEight = 48;

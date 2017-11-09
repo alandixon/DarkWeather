@@ -230,12 +230,12 @@ namespace DarkWeather
                 {
                     if (dayPoint.Time.DayOfYear == hourPoint.Time.DayOfYear)
                     {
-                        if (hourPoint.Time.TimeOfDay < dayPoint.SunriseTime.TimeOfDay)
+                        if (hourPoint.Time.ToLocalTime() < dayPoint.SunriseTime.ToLocalTime())
                         {
                             hourPoint.DayCycle.SunState = SunState.PreSunrise;
                             hourPoint.DayCycle.SunRatio = 0;
                         }
-                        else if (hourPoint.Time.TimeOfDay < dayPoint.SunsetTime.TimeOfDay)
+                        else if (hourPoint.Time.ToLocalTime() < dayPoint.SunsetTime.ToLocalTime())
                         {
                             hourPoint.DayCycle.SunState = SunState.SunUp;
                             hourPoint.DayCycle.SunRatio = 1;
@@ -251,12 +251,12 @@ namespace DarkWeather
                 {
                     if (dayPoint.Time.DayOfYear == minutePoint.Time.DayOfYear)
                     {
-                        if (minutePoint.Time.TimeOfDay < dayPoint.SunriseTime.TimeOfDay)
+                        if (minutePoint.Time.ToLocalTime() < dayPoint.SunriseTime.ToLocalTime())
                         {
                             minutePoint.DayCycle.SunState = SunState.PreSunrise;
                             minutePoint.DayCycle.SunRatio = 0;
                         }
-                        else if (minutePoint.Time.TimeOfDay < dayPoint.SunsetTime.TimeOfDay)
+                        else if (minutePoint.Time.ToLocalTime() < dayPoint.SunsetTime.ToLocalTime())
                         {
                             minutePoint.DayCycle.SunState = SunState.SunUp;
                             minutePoint.DayCycle.SunRatio = 1;

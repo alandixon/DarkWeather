@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 
 namespace DarkWeather.Weather
 {
@@ -11,13 +12,60 @@ namespace DarkWeather.Weather
     }
 
     [DebuggerDisplay("SunState={SunState.ToString()} SunRatio={SunRatio}")]
-    public class DayCycle
+    public class DayCycle : INotifyPropertyChanged
     {
-        public SunState SunState { get; set; }
+        private SunState sunState;
+        public SunState SunState
+        { 
+            get
+            {
+                return sunState;
+            }
+            set
+            {
+                sunState = value;
+                NotifyPropertyChanged("SunState");
+}
+        }
 
-        /// <summary> 
-        /// 
-        /// </summary>
-        public float SunRatio { get; set; }
+        private float sunRatio;
+        public float SunRatio
+        {
+            get
+            {
+                return sunRatio;
+            }
+            set
+            {
+                sunRatio = value;
+                NotifyPropertyChanged("SunRatio");
+                DarkRatio = 1 - sunRatio;
+            }
+        }
+
+        private float darkRatio;
+        public float DarkRatio
+        {
+            get
+            {
+                return darkRatio;
+            }
+            set
+            {
+                darkRatio = value;
+                NotifyPropertyChanged("DarkRatio");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void NotifyPropertyChanged(string propName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
+        }
+
     }
 }
