@@ -95,7 +95,7 @@
     <Compile Include="Weather\IPrediction.cs" />
     <Compile Include="Weather\IDayCycle.cs" />
     <Compile Include="Weather\Minutely.cs" />
-    <Compile Include="Weather\Sun.cs" />
+    <Compile Include="Weather\DayCycle.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\HomePage.xaml">

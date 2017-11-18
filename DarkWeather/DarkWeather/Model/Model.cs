@@ -30,6 +30,8 @@ namespace DarkWeather
 
         private int currentRefreshDelayMinutes = 5;
 
+        DarkSkyService service;
+
         public Model()
         {
             // Wire up location updates
@@ -40,6 +42,7 @@ namespace DarkWeather
             if (!string.IsNullOrEmpty(apiKey))
             {
                 ApiKey = apiKey;
+                service = new DarkSkyService(ApiKey);
             }
             AllowChangeNotificationAfterAWhile();
 
@@ -136,8 +139,16 @@ namespace DarkWeather
                 {
                     throw new NullReferenceException("Location is null");
                 }
-                DarkSkyService service = new DarkSkyService(ApiKey);
-                Forecast forecast = await service.GetWeatherDataAsync(Location.Latitude, Location.Longitude);
+
+                Forecast forecast = null;
+                try
+                {
+                    forecast = await service.GetWeatherDataAsync(Location.Latitude, Location.Longitude);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(logTag, "RefreshFromDarkSky() failed because\n" + ex.Message);
+                }
 
                 // Process days
                 if (forecast != null && forecast.Daily != null && forecast.Daily.Days != null)

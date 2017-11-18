@@ -42,8 +42,7 @@
                 </chart:DateTimeAxis>
             </chart:SfChart.PrimaryAxis>
             <chart:SfChart.SecondaryAxis>
-                <chart:NumericalAxis Minimum="0" Maximum="1" IsInversed="true">
-                </chart:NumericalAxis>
+                <chart:NumericalAxis Minimum="0" Maximum="1" IsInversed="true" IsVisible="False"/>
             </chart:SfChart.SecondaryAxis>
             <chart:SplineAreaSeries Color="DodgerBlue" ItemsSource="{Binding Model.RainfallMinutes}" XBindingPath="LocalTime" YBindingPath="PrecipitationProbability"/>
             <chart:SplineSeries Color="MediumBlue" ItemsSource="{Binding Model.RainfallMinutes}" XBindingPath="LocalTime" YBindingPath="PrecipitationIntensity"/>
