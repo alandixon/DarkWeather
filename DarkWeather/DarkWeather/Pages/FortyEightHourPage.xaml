@@ -43,8 +43,8 @@
             <chart:SfChart.SecondaryAxis>
                 <chart:NumericalAxis Minimum="0" Maximum="1" IsInversed="true" IsVisible="False" />
             </chart:SfChart.SecondaryAxis>
-            <chart:StepAreaSeries Color="Gray" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="DayCycle.DarkRatio" IsVisible="{Binding SunCloudEnabled}"/>
-            <chart:StepAreaSeries Color="Yellow" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="DayCycle.SunRatio" IsVisible="{Binding SunCloudEnabled}"/>
+            <chart:StepAreaSeries Color="Gray" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="DarkRatio" IsVisible="{Binding SunCloudEnabled}"/>
+            <chart:StepAreaSeries Color="Yellow" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="SunRatio" IsVisible="{Binding SunCloudEnabled}"/>
             <chart:SplineAreaSeries Color="LightGray" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="CloudCover" IsVisible="{Binding SunCloudEnabled}" />
             <chart:SplineAreaSeries Color="DodgerBlue" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="PrecipitationProbability" IsVisible="{Binding RainEnabled}" />
             <chart:SplineAreaSeries Color="MediumBlue" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="PrecipitationIntensity" IsVisible="{Binding RainEnabled}" />

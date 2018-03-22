@@ -249,17 +249,17 @@ namespace DarkWeather
                         if (hourPoint.Time.ToLocalTime() < dayPoint.SunriseTime.ToLocalTime())
                         {
                             hourPoint.DayCycle.SunState = SunState.PreSunrise;
-                            hourPoint.DayCycle.SunRatio = 0;
+                            hourPoint.SunRatio = hourPoint.DayCycle.SunRatio = 0;
                         }
                         else if (hourPoint.Time.ToLocalTime() < dayPoint.SunsetTime.ToLocalTime())
                         {
                             hourPoint.DayCycle.SunState = SunState.SunUp;
-                            hourPoint.DayCycle.SunRatio = 1;
+                            hourPoint.SunRatio = hourPoint.DayCycle.SunRatio = 1;
                         }
                         else
                         {
                             hourPoint.DayCycle.SunState = SunState.PostSunset;
-                            hourPoint.DayCycle.SunRatio = 0;
+                            hourPoint.SunRatio = hourPoint.DayCycle.SunRatio = 0;
                         }
                     }
                 }
