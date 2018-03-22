@@ -44,8 +44,20 @@
                 <StackLayout Orientation="Horizontal" BackgroundColor="WhiteSmoke">
                     <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
                         <Label Margin="3,0" Text="Temp °C" TextColor="Red" Font="Bold" />
-                        <Label Margin="3,0" Text="Apparent" TextColor="Orange" Font="Bold" />
-                        <Switch IsToggled="{Binding TempEnabled}" HorizontalOptions="Start" />
+                        <Switch IsToggled="{Binding TempCEnabled}" HorizontalOptions="Start" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
+                        <Label Margin="3,0" Text="Temp °F" TextColor="Red" Font="Bold" />
+                        <Switch IsToggled="{Binding TempFEnabled}" HorizontalOptions="Start" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Margin="4,0" Padding="1" BackgroundColor="DarkGray">
+                <StackLayout Orientation="Horizontal" BackgroundColor="WhiteSmoke">
+                    <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
+                        <Label Margin="3,0" Text="Wind" TextColor="Green" Font="Bold" />
+                        <Switch IsToggled="{Binding WindEnabled}" HorizontalOptions="Start" />
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

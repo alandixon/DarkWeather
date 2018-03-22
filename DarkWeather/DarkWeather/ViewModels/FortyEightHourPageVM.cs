@@ -7,7 +7,8 @@
             HourSummaryEnabled = true;
             SunCloudEnabled = true;
             RainEnabled = true;
-            TempEnabled = true;
+            TempCEnabled = true;
+            WindEnabled = true;
         }
 
         private bool hourSummaryEnabled;
@@ -32,6 +33,17 @@
             }
         }
 
+        private bool windEnabled;
+        public bool WindEnabled
+        {
+            get { return windEnabled; }
+            set
+            {
+                windEnabled = value;
+                NotifyPropertyChanged("WindEnabled");
+            }
+        }
+
         private bool tempEnabled;
         public bool TempEnabled
         {
@@ -40,6 +52,30 @@
             {
                 tempEnabled = value;
                 NotifyPropertyChanged("TempEnabled");
+            }
+        }
+
+        private bool tempCEnabled;
+        public bool TempCEnabled
+        {
+            get { return tempCEnabled; }
+            set
+            {
+                tempCEnabled = value;
+                NotifyPropertyChanged("TempCEnabled");
+                TempEnabled = tempCEnabled || tempFEnabled;
+            }
+        }
+
+        private bool tempFEnabled;
+        public bool TempFEnabled
+        {
+            get { return tempFEnabled; }
+            set
+            {
+                tempFEnabled = value;
+                NotifyPropertyChanged("TempFEnabled");
+                TempEnabled = tempCEnabled || tempFEnabled;
             }
         }
 

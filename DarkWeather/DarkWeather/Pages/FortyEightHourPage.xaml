@@ -47,29 +47,32 @@
             <chart:StepAreaSeries Color="Yellow" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="DayCycle.SunRatio" IsVisible="{Binding SunCloudEnabled}"/>
             <chart:SplineAreaSeries Color="LightGray" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="CloudCover" IsVisible="{Binding SunCloudEnabled}" />
             <chart:SplineAreaSeries Color="DodgerBlue" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="PrecipitationProbability" IsVisible="{Binding RainEnabled}" />
-            <chart:SplineSeries Color="MediumBlue" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="PrecipitationIntensity" IsVisible="{Binding RainEnabled}" />
+            <chart:SplineAreaSeries Color="MediumBlue" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="PrecipitationIntensity" IsVisible="{Binding RainEnabled}" />
 
             <!--https://www.syncfusion.com/forums/127661/multiple-axis-for-multiple-series-->
             <chart:SplineSeries Color="Red" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="TemperatureC" IsVisible="{Binding TempEnabled}">
                 <chart:SplineSeries.YAxis >
-                    <chart:NumericalAxis OpposedPosition="True">
+                    <chart:NumericalAxis OpposedPosition="True" IsVisible="{Binding TempCEnabled}">
                         <chart:NumericalAxis.LabelStyle>
-                            <chart:ChartAxisLabelStyle TextColor="Red">
-                                <!-- Trying to embolden the (red) Temp axis labels from here: -->
-                                <!-- https://help.syncfusion.com/xamarin/sfchart/axis#label-customization -->
-                                <!-- but it's not working -->
-                                <!--<chart:ChartAxisLabelStyle.Font>
-                                    <Font FontAttributes ="Bold" />
-                                </chart:ChartAxisLabelStyle.Font>-->
-                            </chart:ChartAxisLabelStyle>
+                            <chart:ChartAxisLabelStyle TextColor="Red"/>
                         </chart:NumericalAxis.LabelStyle>
                     </chart:NumericalAxis>
                 </chart:SplineSeries.YAxis>
             </chart:SplineSeries>
 
-            <chart:SplineSeries Color="LimeGreen" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="WindSpeed" IsVisible="{Binding TempEnabled}">
+            <chart:SplineSeries Color="Red" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="TemperatureF" IsVisible="{Binding TempFEnabled}">
                 <chart:SplineSeries.YAxis >
-                    <chart:NumericalAxis OpposedPosition="False">
+                    <chart:NumericalAxis OpposedPosition="True" IsVisible="{Binding TempFEnabled}">
+                        <chart:NumericalAxis.LabelStyle>
+                            <chart:ChartAxisLabelStyle TextColor="Red"/>
+                        </chart:NumericalAxis.LabelStyle>
+                    </chart:NumericalAxis>
+                </chart:SplineSeries.YAxis>
+            </chart:SplineSeries>
+
+            <chart:SplineSeries Color="LimeGreen" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="LocalTime" YBindingPath="WindSpeed" IsVisible="{Binding WindEnabled}">
+                <chart:SplineSeries.YAxis >
+                    <chart:NumericalAxis OpposedPosition="False" IsVisible="{Binding WindEnabled}">
                         <chart:NumericalAxis.LabelStyle>
                             <chart:ChartAxisLabelStyle TextColor="Green"/>
                         </chart:NumericalAxis.LabelStyle>
