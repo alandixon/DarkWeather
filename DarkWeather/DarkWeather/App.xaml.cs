@@ -60,6 +60,7 @@ namespace DarkWeather
 
         protected override void OnResume()
         {
+            Model.BumpRefresh();
         }
 
         public static bool MenuIsPresented

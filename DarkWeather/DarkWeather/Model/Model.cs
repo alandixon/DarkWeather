@@ -91,6 +91,11 @@ namespace DarkWeather
             return true;
         }
 
+        public void BumpRefresh()
+        {
+            RefreshFromDarkSky();
+        }
+
         private void AllowChangeNotificationAfterAWhile()
         {
             Task.Delay(5000)
