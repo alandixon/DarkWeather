@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using Xamarin.Forms;
 
@@ -57,10 +58,13 @@ namespace DarkWeather.Weather
             {
                 DarkRatio = 1 - value;
                 if (SunRatio == value) return;
+                SunRatioChanged?.Invoke(value); // new
                 SetSunRatio(this, value);
                 OnPropertyChanged("SunRatio");
             }
         }
+
+        public event Action<float> SunRatioChanged;  // new
 
         public static float GetSunRatio(BindableObject target)
         {
@@ -84,10 +88,13 @@ namespace DarkWeather.Weather
             set
             {
                 if (DarkRatio == value) return;
+                DarkRatioChanged?.Invoke(value); // new
                 SetDarkRatio(this, value);
                 OnPropertyChanged("DarkRatio");
             }
         }
+
+        public event Action<float> DarkRatioChanged;  // new
 
         public static float GetDarkRatio(BindableObject target)
         {

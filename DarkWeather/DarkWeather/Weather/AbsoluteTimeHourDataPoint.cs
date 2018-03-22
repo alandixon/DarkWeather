@@ -25,12 +25,26 @@ namespace DarkWeather.Weather
         public float ApparentTemperatureC { get; set; }
         public float CloudCover { get; set; }
         public float WindSpeed { get; set; }
+        public float SunRatio { get; set; }
+        public float DarkRatio { get; set; }
 
         public DayCycle DayCycle { get; set; }
 
         public AbsoluteTimeHourDataPoint()
         {
             DayCycle = new DayCycle();
+            DayCycle.SunRatioChanged += DayCycle_SunRatioChanged;
+            DayCycle.DarkRatioChanged += DayCycle_DarkRatioChanged;
+        }
+
+        private void DayCycle_SunRatioChanged(float ratio)
+        {
+            SunRatio = ratio;
+        }
+
+        private void DayCycle_DarkRatioChanged(float ratio)
+        {
+            DarkRatio = ratio;
         }
 
         /// <summary> Convert offset time hourpoint list to absolute </summary>
