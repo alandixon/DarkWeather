@@ -56,7 +56,7 @@ namespace DarkWeather.Droid
         /// <returns></returns>
         public string GetProperty(string propertyName, string appName)
         {
-            var account = AccountStore.Create(Forms.Context).FindAccountsForService(appName).FirstOrDefault();
+            var account = AccountStore.Create(Forms.Context, "System.Char[]").FindAccountsForService(appName).FirstOrDefault();
             return account?.Properties[propertyName];
         }
 
