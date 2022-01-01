@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DarkWeather.FortyEightHourMenuPage" BackgroundColor="Transparent">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+    </ContentPage.Padding>
+    
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="LightSteelBlue">
+
+            <StackLayout Margin="4,4,4,0" Padding="1" BackgroundColor="DarkGray" >
+                <StackLayout Orientation="Vertical" BackgroundColor="LightGray">
+                    <StackLayout Orientation="Horizontal" Spacing="1" Padding="1">
+                        <Label Text="Cloud" TextColor="Gray" Font="Bold" HorizontalOptions="Start"/>
+                        <Label Text="Sun" TextColor="Yellow" Font="Bold" HorizontalOptions="End"/>
+                    </StackLayout>
+                    <Switch IsToggled="{Binding SunCloudEnabled}" HorizontalOptions="Start" />
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Margin="4,0" Padding="1" BackgroundColor="DarkGray">
+                <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
+                    <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
+                        <Label Margin="3,0" Text="Rain:  Likelihood" TextColor="DodgerBlue" Font="Bold" />
+                        <Label Margin="3,0" Text="Intensity" TextColor="MediumBlue" Font="Bold" HorizontalTextAlignment="End"/>
+                        <Switch IsToggled="{Binding RainEnabled}" HorizontalOptions="Start" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Margin="4,0" Padding="1" BackgroundColor="DarkGray">
+                <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
+                    <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
+                        <Label Margin="3,0" Text="Temp °C" TextColor="Red" Font="Bold" />
+                        <Label Margin="3,0" Text="Apparent" TextColor="Orange" Font="Bold" />
+                        <Switch IsToggled="{Binding TempEnabledx}" HorizontalOptions="Start" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Margin="4,0" Padding="1" >
+                <Button Text="Done" Clicked="Done_Clicked"/>
+            </StackLayout>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+    
+</ContentPage>

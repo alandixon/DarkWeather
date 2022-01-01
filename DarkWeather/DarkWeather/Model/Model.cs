@@ -24,7 +24,7 @@ namespace DarkWeather
 
         // Set after initialisation has completed
         // It prevents NotifyPropertyChanged() getting called too early
-        bool allowChangeNotification;
+        public bool AllowChangeNotification { get; set; }
 
         private Db.DataTransfer db = null;
 
@@ -47,10 +47,6 @@ namespace DarkWeather
             db = new Db.DataTransfer();
             // Purge rows older than one day
             PurgeOldData();
-
-            SunCloudEnabled = true;
-            RainEnabled = true;
-            TempEnabled = true;
 
             SetEmptyDataPoints();
 
@@ -97,7 +93,7 @@ namespace DarkWeather
             Task.Delay(5000)
                 .ContinueWith((t) =>
                 {
-                    allowChangeNotification = true;
+                    AllowChangeNotification = true;
                     NotifyPropertyChanged("DataLabelText");
                 });
         }
@@ -371,7 +367,7 @@ namespace DarkWeather
             }
             set
             {
-                if (allowChangeNotification)
+                if (AllowChangeNotification)
                 {
                     apiKeyHasChanged = value;
                     NotifyPropertyChanged("ApiKeyHasChanged");
@@ -407,7 +403,7 @@ namespace DarkWeather
             }
             set
             {
-                if (allowChangeNotification)
+                if (AllowChangeNotification)
                 {
                     dataLabelText = value;
                     NotifyPropertyChanged("DataLabelText");
@@ -465,39 +461,6 @@ namespace DarkWeather
             }
         }
 
-        private bool sunCloudEnabled;
-        public bool SunCloudEnabled
-        {
-            get { return sunCloudEnabled; }
-            set
-            {
-                sunCloudEnabled = value;
-                NotifyPropertyChanged("SunCloudEnabled");
-            }
-        }
-
-        private bool rainEnabled;
-        public bool RainEnabled
-        {
-            get { return rainEnabled; }
-            set
-            {
-                rainEnabled = value;
-                NotifyPropertyChanged("RainEnabled");
-            }
-        }
-
-        private bool tempEnabled;
-        public bool TempEnabled
-        {
-            get { return tempEnabled; }
-            set
-            {
-                tempEnabled = value;
-                NotifyPropertyChanged("TempEnabled");
-            }
-        }
-
 
         #endregion Properties
 
@@ -506,7 +469,7 @@ namespace DarkWeather
 
         public void NotifyPropertyChanged(string propName)
         {
-            if (allowChangeNotification && PropertyChanged != null)
+            if (AllowChangeNotification && PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }

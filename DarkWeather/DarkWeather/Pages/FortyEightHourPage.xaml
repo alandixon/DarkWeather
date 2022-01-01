@@ -12,7 +12,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -31,7 +30,7 @@
 
         <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Fill">
             <Label Margin="10,0" Text="48 hour weather" HorizontalOptions="Start" />
-            <Label Margin="10,0" Text="{Binding DataLabelText}" HorizontalOptions="End" />
+            <Label Margin="10,0" Text="{Binding Model.DataLabelText}" HorizontalOptions="End" />
         </StackLayout>
 
         <chart:SfChart Grid.Row="2" >
@@ -46,13 +45,13 @@
                 <chart:NumericalAxis Minimum="0" Maximum="1" IsInversed="true">
                 </chart:NumericalAxis>
             </chart:SfChart.SecondaryAxis>
-            <chart:SplineAreaSeries Color="Yellow" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="Sun" IsVisible="{Binding SunCloudEnabled}"/>
-            <chart:SplineAreaSeries Color="Gray" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="CloudCover" IsVisible="{Binding SunCloudEnabled}" />
-            <chart:SplineAreaSeries Color="DodgerBlue" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationProbability" IsVisible="{Binding RainEnabled}" />
-            <chart:SplineSeries Color="MediumBlue" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationIntensity" IsVisible="{Binding RainEnabled}" />
+            <chart:SplineAreaSeries Color="Yellow" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="Time" YBindingPath="Sun" IsVisible="{Binding SunCloudEnabled}"/>
+            <chart:SplineAreaSeries Color="Gray" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="Time" YBindingPath="CloudCover" IsVisible="{Binding SunCloudEnabled}" />
+            <chart:SplineAreaSeries Color="DodgerBlue" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationProbability" IsVisible="{Binding RainEnabled}" />
+            <chart:SplineSeries Color="MediumBlue" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationIntensity" IsVisible="{Binding RainEnabled}" />
 
             <!--https://www.syncfusion.com/forums/127661/multiple-axis-for-multiple-series-->
-            <chart:SplineSeries Color="Red" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="TemperatureC" IsVisible="{Binding TempEnabled}">
+            <chart:SplineSeries Color="Red" ItemsSource="{Binding Model.WeatherHours}" XBindingPath="Time" YBindingPath="TemperatureC" IsVisible="{Binding TempEnabled}">
                 <chart:SplineSeries.YAxis >
                     <chart:NumericalAxis OpposedPosition="True">
                         <chart:NumericalAxis.LabelStyle>

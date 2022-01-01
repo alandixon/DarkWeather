@@ -16,7 +16,7 @@ namespace DarkWeather
             Settings.EnableLabelUri(poweredByLabel);
             Settings.EnableLabelUri(faqLabel);
 
-            BindingContext = Global.Model;
+            BindingContext = App.Model;
 
             Log.Debug(logTag, "AppSettingsPage started", true);
 
@@ -24,24 +24,24 @@ namespace DarkWeather
 
         public void RefreshClicked(object sender, EventArgs args)
         {
-            Global.Model.RefreshFromDarkSky();
+            App.Model.RefreshFromDarkSky();
         }
 
         public void SaveApiKeyClicked(object sender, EventArgs args)
         {
-            Global.Model.SaveApiKey(apiKey.Text);
+            App.Model.SaveApiKey(apiKey.Text);
         }
 
         public void ApiKeyChanged(object sender, EventArgs args)
         {
-            Global.Model.ApiKeyHasChanged = true;
+            App.Model.ApiKeyHasChanged = true;
         }
 
         private void RefreshDelayPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Global.Model != null)
+            if (App.Model != null)
             {
-                Global.Model.RefreshDelayString = (sender as Picker).SelectedItem.ToString();
+                App.Model.RefreshDelayString = (sender as Picker).SelectedItem.ToString();
             }
         }
 

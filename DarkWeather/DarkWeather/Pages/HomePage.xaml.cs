@@ -15,12 +15,12 @@ namespace DarkWeather
         {
             InitializeComponent();
 
-            Global.Model = new Model();
-            BindingContext = Global.Model;
+            App.Model = new Model();
+            BindingContext = App.Model;
 
-            Global.HomePage = this;
-            Global.AppSettingsPage = new AppSettingsPage();
-            Global.FortyEightHourPage = new FortyEightHourPage();
+            //Global.HomePage = this;
+            //Global.AppSettingsPage = new AppSettingsPage();
+            //Global.FortyEightHourPage = new FortyEightHourPage();
 
             Log.Debug(logTag, "HomePage started", true);
 
@@ -28,7 +28,7 @@ namespace DarkWeather
 
         private void AppSettings_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(Global.AppSettingsPage);
+            Navigation.PushAsync(App.AppSettingsPage);
         }
 
         private void FortyEightHour_Clicked(object sender, EventArgs e)
