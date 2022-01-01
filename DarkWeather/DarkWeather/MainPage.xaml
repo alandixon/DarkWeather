@@ -70,9 +70,11 @@
                 <Label Margin="10,0" Text="{Binding DataLabelText}" HorizontalOptions="End" />
             </StackLayout>
             <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Fill">
-                <Label Margin="10,0" Text="Likelihood" TextColor="DodgerBlue" Font="Bold" HorizontalOptions="Start" />
-                <Label Margin="10,0" Text="Intensity" TextColor="MediumBlue" Font="Bold" HorizontalOptions="End"/>
-            </StackLayout>
+                    <Label Margin="6,0" Text="Cloud" TextColor="Gray" Font="Bold" HorizontalOptions="End"/>
+                    <Label Margin="6,0" Text="Rain Likelihood" TextColor="DodgerBlue" Font="Bold" HorizontalOptions="Start" />
+                    <Label Margin="6,0" Text="Rain Intensity" TextColor="MediumBlue" Font="Bold" HorizontalOptions="End"/>
+                    <Label Margin="6,0" Text="Temp °C" TextColor="Red" Font="Bold" HorizontalOptions="End"/>
+                </StackLayout>
             <chart:SfChart Grid.Row="2" >
                 <chart:SfChart.PrimaryAxis>
                     <chart:DateTimeAxis IntervalType="Hours" Interval="12" >
@@ -85,8 +87,17 @@
                     <chart:NumericalAxis Minimum="0" Maximum="1" IsInversed="true">
                     </chart:NumericalAxis>
                 </chart:SfChart.SecondaryAxis>
+                <chart:SplineAreaSeries Color="Gray" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="CloudCover"/>
                 <chart:SplineAreaSeries Color="DodgerBlue" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationProbability"/>
                 <chart:SplineSeries Color="MediumBlue" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationIntensity"/>
+
+                    <!--https://www.syncfusion.com/forums/127661/multiple-axis-for-multiple-series-->
+                <chart:SplineSeries Color="Red" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="TemperatureC">
+                    <chart:SplineSeries.YAxis>
+                        <chart:NumericalAxis OpposedPosition="True" />
+                    </chart:SplineSeries.YAxis>
+                </chart:SplineSeries>
+                
             </chart:SfChart>
             <Label Grid.Row="3" Margin="25,0" Text="" Font="Bold" HorizontalOptions="Start" />
         </Grid>
