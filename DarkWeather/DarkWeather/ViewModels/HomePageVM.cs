@@ -4,9 +4,21 @@
     {
         public HomePageVM(Model model) : base(model)
         {
-            SunCloudEnabled = true;
+            CurrentSummaryEnabled = true;
             RainEnabled = true;
-            TempEnabled = true;
         }
+
+        private bool currentSummaryEnabled;
+        public bool CurrentSummaryEnabled
+        {
+            get { return currentSummaryEnabled; }
+            set
+            {
+                currentSummaryEnabled = value;
+                NotifyPropertyChanged("CurrentSummaryEnabled");
+            }
+        }
+
+
     }
 }

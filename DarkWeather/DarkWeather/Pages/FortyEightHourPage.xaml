@@ -15,7 +15,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
@@ -29,8 +29,7 @@
         </StackLayout>
 
         <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Fill">
-            <Label Margin="10,0" Text="48 hour weather" HorizontalOptions="Start" />
-            <Label Margin="10,0" Text="{Binding Model.DataLabelText}" HorizontalOptions="End" />
+            <Label Margin="10,0" Text="{Binding Model.SummaryHour}" HorizontalOptions="Start" IsVisible="{Binding HourSummaryEnabled}" />
         </StackLayout>
 
         <chart:SfChart Grid.Row="2" >
@@ -69,7 +68,11 @@
             </chart:SplineSeries>
 
         </chart:SfChart>
-        <Label Grid.Row="3" Margin="25,0" Text="" Font="Bold" HorizontalOptions="Start" />
+
+        <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="Fill">
+            <Label Margin="10,0" Text="{Binding Model.DataLabelText}" HorizontalOptions="End" />
+        </StackLayout>
+
     </Grid>
 
 </ContentPage>

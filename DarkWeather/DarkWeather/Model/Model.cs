@@ -152,6 +152,8 @@ namespace DarkWeather
                     await Task.Run(() => SaveToDbAsync(forecast.Hourly.Hours));
                 }
 
+                UpdateSummaries(forecast);
+
                 DataLabelText = string.Format("Data from {0:00}:{1:00}", DateTime.Now.Hour, DateTime.Now.Minute);
 
                 ApiCallsMade = service.ApiCallsMade ?? 0;
@@ -165,6 +167,44 @@ namespace DarkWeather
             catch (Exception ex)
             {
                 Log.Error(logTag, "RefreshFromDarkSky() failed - " +  ex.Message);
+            }
+        }
+
+        private void UpdateSummaries(Forecast forecast)
+        {
+            if (forecast != null)
+            {
+                if (forecast.Daily != null)
+                {
+                    SummaryDay = forecast.Daily.Summary;
+                }
+
+                if (forecast.Hourly != null)
+                {
+                    SummaryHour = forecast.Hourly.Summary;
+                }
+                else
+                {
+                    SummaryHour = SummaryDay;
+                }
+
+                if (forecast.Minutely != null)
+                {
+                    SummaryMinute = forecast.Minutely.Summary;
+                }
+                else
+                {
+                    SummaryMinute = SummaryHour;
+                }
+
+                if (forecast.Currently != null)
+                {
+                    SummaryCurrent = forecast.Currently.Summary;
+                }
+                else
+                {
+                    SummaryMinute = SummaryMinute;
+                }
             }
         }
 
@@ -422,6 +462,62 @@ namespace DarkWeather
             {
                 location = value;
                 NotifyPropertyChanged("Location");
+            }
+        }
+
+        private string summaryCurrent;
+        public string SummaryCurrent
+        {
+            get
+            {
+                return summaryCurrent;
+            }
+            private set
+            {
+                summaryCurrent = value;
+                NotifyPropertyChanged("SummaryCurrent");
+            }
+        }
+
+        private string summaryMinute;
+        public string SummaryMinute
+        {
+            get
+            {
+                return summaryMinute;
+            }
+            private set
+            {
+                summaryMinute = value;
+                NotifyPropertyChanged("SummaryMinute");
+            }
+        }
+
+        private string summaryHour;
+        public string SummaryHour
+        {
+            get
+            {
+                return summaryHour;
+            }
+            private set
+            {
+                summaryHour = value;
+                NotifyPropertyChanged("SummaryHour");
+            }
+        }
+
+        private string summaryDay;
+        public string SummaryDay
+        {
+            get
+            {
+                return summaryDay;
+            }
+            private set
+            {
+                summaryDay = value;
+                NotifyPropertyChanged("SummaryDay");
             }
         }
 

@@ -13,10 +13,9 @@
             <StackLayout Margin="4,4,4,0" Padding="1" BackgroundColor="DarkGray" >
                 <StackLayout Orientation="Vertical" BackgroundColor="LightGray">
                     <StackLayout Orientation="Horizontal" Spacing="1" Padding="1">
-                        <Label Text="Cloud" TextColor="Gray" Font="Bold" HorizontalOptions="Start"/>
-                        <Label Text="Sun" TextColor="Yellow" Font="Bold" HorizontalOptions="End"/>
+                        <Label Text="Summary" TextColor="Gray" Font="Bold" HorizontalOptions="Start"/>
                     </StackLayout>
-                    <Switch IsToggled="{Binding SunCloudEnabled}" HorizontalOptions="Start" />
+                    <Switch IsToggled="{Binding CurrentSummaryEnabled}" HorizontalOptions="Start" />
                 </StackLayout>
             </StackLayout>
 
@@ -26,16 +25,6 @@
                         <Label Margin="3,0" Text="Rain:  Likelihood" TextColor="DodgerBlue" Font="Bold" />
                         <Label Margin="3,0" Text="Intensity" TextColor="MediumBlue" Font="Bold" HorizontalTextAlignment="End"/>
                         <Switch IsToggled="{Binding RainEnabled}" HorizontalOptions="Start" />
-                    </StackLayout>
-                </StackLayout>
-            </StackLayout>
-
-            <StackLayout Margin="4,0" Padding="1" BackgroundColor="DarkGray">
-                <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
-                    <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
-                        <Label Margin="3,0" Text="Temp °C" TextColor="Red" Font="Bold" />
-                        <Label Margin="3,0" Text="Apparent" TextColor="Orange" Font="Bold" />
-                        <Switch IsToggled="{Binding TempEnabled}" HorizontalOptions="Start" />
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
