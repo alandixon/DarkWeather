@@ -11,6 +11,8 @@ namespace DarkWeather.Weather
         public float PrecipitationProbability { get; set; }
         public float TemperatureF { get; set; }
         public float TemperatureC { get; set; }
+        public float ApparentTemperatureF { get; set; }
+        public float ApparentTemperatureC { get; set; }
         public float CloudCover { get; set; }
         public float Sun { get { return 100; }  }
 
@@ -47,6 +49,8 @@ namespace DarkWeather.Weather
                 PrecipitationType = hourDataPoint.PrecipitationType,
                 TemperatureF = hourDataPoint.Temperature,
                 TemperatureC = (hourDataPoint.Temperature - 32) * 5 / 9,
+                ApparentTemperatureF = hourDataPoint.ApparentTemperature,
+                ApparentTemperatureC = (hourDataPoint.ApparentTemperature - 32) * 5 / 9,
                 CloudCover = hourDataPoint.CloudCover
             };
             return absoluteTimeHourDataPoint;

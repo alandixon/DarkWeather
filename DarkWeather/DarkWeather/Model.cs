@@ -48,6 +48,10 @@ namespace DarkWeather
             // Purge rows older than one day
             PurgeOldData();
 
+            SunCloudEnabled = true;
+            RainEnabled = true;
+            TempEnabled = true;
+
             SetEmptyDataPoints();
 
             // Look for a valid Location, but don't wait for the result
@@ -456,6 +460,40 @@ namespace DarkWeather
                 return version.VersionName;
             }
         }
+
+        private bool sunCloudEnabled;
+        public bool SunCloudEnabled
+        {
+            get { return sunCloudEnabled; }
+            set
+            {
+                sunCloudEnabled = value;
+                NotifyPropertyChanged("SunCloudEnabled");
+            }
+        }
+
+        private bool rainEnabled;
+        public bool RainEnabled
+        {
+            get { return rainEnabled; }
+            set
+            {
+                rainEnabled = value;
+                NotifyPropertyChanged("RainEnabled");
+            }
+        }
+
+        private bool tempEnabled;
+        public bool TempEnabled
+        {
+            get { return tempEnabled; }
+            set
+            {
+                tempEnabled = value;
+                NotifyPropertyChanged("TempEnabled");
+            }
+        }
+
 
         #endregion Properties
 
