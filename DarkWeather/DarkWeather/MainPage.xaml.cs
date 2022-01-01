@@ -15,6 +15,22 @@ namespace DarkWeather
         {
             InitializeComponent();
 
+
+            navigationDrawer1.DrawerWidth = 200;
+            // hamburgerButton.Image = (FileImageSource)ImageSource.FromFile("Hamburger50.png");
+
+            //List<string> list = new List<string>();
+            //list.Add("Home");
+            //list.Add("Profile");
+            //list.Add("Inbox");
+            //list.Add("Outbox");
+            //list.Add("Sent");
+            //list.Add("Draft");
+            //listView.ItemsSource = list;
+
+
+
+
             Settings.EnableLabelUri(poweredByLabel);
             Settings.EnableLabelUri(faqLabel);
             model = new Model();
@@ -23,6 +39,17 @@ namespace DarkWeather
             Log.Debug(logTag, "MainPage started", true);
 
         }
+
+        void hamburgerButton_Clicked(object sender, EventArgs e)
+        {
+            navigationDrawer1.ToggleDrawer();
+        }
+
+        //private void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        //{
+        //    // Your codes here
+        //    navigation.ToggleDrawer();
+        //}
 
         public void RefreshClicked(object sender, EventArgs args)
         {
@@ -45,6 +72,11 @@ namespace DarkWeather
             {
                 model.RefreshDelayString = (sender as Picker).SelectedItem.ToString();
             }
+        }
+
+        private void HamburgerButton_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -48,6 +48,8 @@ The following extra libraries are used
 
 * Purge data at intervals while the app is running. Currently only happens at startup.
 
+* Use sunrise / sunset times in response data to stop "sun" showing at night.
+
 * Logging needs help. Currently, all logging is driven into the Android debug log. I initially looked at NLog but it turned into a bit of a mare.
 
 * iOS and Windows implementation

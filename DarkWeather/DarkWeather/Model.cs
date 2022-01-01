@@ -143,16 +143,20 @@ namespace DarkWeather
                 DarkSkyService service = new DarkSkyService(ApiKey);
                 Forecast forecast = await service.GetWeatherDataAsync(Location.Latitude, Location.Longitude);
 
-                RainfallMinutes = AbsoluteTimeMinuteDataPoint.ConvertFromOffsetTime(forecast.Minutely.Minutes);
-                WeatherHours = AbsoluteTimeHourDataPoint.ConvertFromOffsetTime(forecast.Hourly.Hours);
+                // Check presence of minutes - occasionally they seem to be missing! 
+                if (forecast != null && forecast.Minutely != null && forecast.Minutely.Minutes != null)
+                {
+                    RainfallMinutes = AbsoluteTimeMinuteDataPoint.ConvertFromOffsetTime(forecast.Minutely.Minutes);
+                    await Task.Run(() => SaveToDbAsync(forecast.Minutely.Minutes));
+                }
+                // and hours ...
+                if (forecast != null && forecast.Hourly != null && forecast.Hourly.Hours != null)
+                {
+                    WeatherHours = AbsoluteTimeHourDataPoint.ConvertFromOffsetTime(forecast.Hourly.Hours);
+                    await Task.Run(() => SaveToDbAsync(forecast.Hourly.Hours));
+                }
 
                 DataLabelText = string.Format("Data from {0:00}:{1:00}", DateTime.Now.Hour, DateTime.Now.Minute);
-
-                await Task.Run(() =>
-                {
-                    SaveToDbAsync(forecast.Minutely.Minutes);
-                    SaveToDbAsync(forecast.Hourly.Hours);
-                });
 
                 ApiCallsMade = service.ApiCallsMade ?? 0;
                 float apparentTemp = forecast.Currently.ApparentTemperature;

@@ -11,7 +11,7 @@ namespace DarkWeather.Droid
 {
     // http://stackoverflow.com/questions/24611977/android-locationclient-class-is-deprecated-but-used-in-documentation/25173057#25173057
 
-    [Activity(Label = "DarkWeather", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "DarkWeather", Icon = "@drawable/CloudSun128xpt", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : 
         global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity,
         GoogleApiClient.IConnectionCallbacks,
