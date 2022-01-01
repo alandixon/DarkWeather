@@ -1,20 +1,16 @@
 ﻿using DarkSkyApi.Models;
-using System;
 using System.Collections.Generic;
 
 namespace DarkWeather.Weather
 {
-    public class AbsoluteTimeMinuteDataPoint
+    public class AbsoluteTimeMinuteDataPoint : AbsoluteTimeDataPoint
     {
-        public DateTime Time { get; set; }
-        public float PrecipitationIntensity { get; set; }
-        public float PrecipitationProbability { get; set; }
+        public Sun Sun { get; set; }
 
-        // According to DarkSky, this can be one of "rain", "snow", or "sleet" or undefined if precipIntensity is zero
-        // See https://darksky.net/dev/docs/response#data-point
-        public string PrecipitationType { get; set; }
-
-        public AbsoluteTimeMinuteDataPoint() { }
+        public AbsoluteTimeMinuteDataPoint()
+        {
+            Sun = new Sun();
+        }
 
         /// <summary> Convert offset time minutepoint list to absolute </summary>
         /// <param name="minuteDataPoints"></param>
@@ -37,6 +33,7 @@ namespace DarkWeather.Weather
             var absoluteTimeMinuteDataPoint = new AbsoluteTimeMinuteDataPoint()
             {
                 Time = minuteDataPoint.Time.DateTime,
+                LocalTime = minuteDataPoint.Time.DateTime.ToLocalTime(),
                 PrecipitationIntensity = minuteDataPoint.PrecipitationIntensity,
                 PrecipitationProbability = minuteDataPoint.PrecipitationProbability,
                 PrecipitationType = minuteDataPoint.PrecipitationType

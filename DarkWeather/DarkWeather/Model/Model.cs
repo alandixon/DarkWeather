@@ -139,19 +139,27 @@ namespace DarkWeather
                 DarkSkyService service = new DarkSkyService(ApiKey);
                 Forecast forecast = await service.GetWeatherDataAsync(Location.Latitude, Location.Longitude);
 
+                // Process days
+                if (forecast != null && forecast.Daily != null && forecast.Daily.Days != null)
+                {
+                    WeatherDays = AbsoluteTimeDayDataPoint.ConvertFromOffsetTime(forecast.Daily.Days);
+                    //Todo: No storage yet - needs implementing
+                    //await Task.Run(() => SaveToDbAsync(forecast.Hourly.Hours));
+                }
                 // Check presence of minutes - occasionally they seem to be missing! 
                 if (forecast != null && forecast.Minutely != null && forecast.Minutely.Minutes != null)
                 {
                     RainfallMinutes = AbsoluteTimeMinuteDataPoint.ConvertFromOffsetTime(forecast.Minutely.Minutes);
                     await Task.Run(() => SaveToDbAsync(forecast.Minutely.Minutes));
                 }
-                // and hours ...
+                // and hours
                 if (forecast != null && forecast.Hourly != null && forecast.Hourly.Hours != null)
                 {
                     WeatherHours = AbsoluteTimeHourDataPoint.ConvertFromOffsetTime(forecast.Hourly.Hours);
                     await Task.Run(() => SaveToDbAsync(forecast.Hourly.Hours));
                 }
 
+                UpdateSunEventTimes(RainfallMinutes, WeatherHours, WeatherDays);
                 UpdateSummaries(forecast);
 
                 DataLabelText = string.Format("Data from {0:00}:{1:00}", DateTime.Now.Hour, DateTime.Now.Minute);
@@ -214,13 +222,69 @@ namespace DarkWeather
             SaveToDbAsync("Location", Location.ToString(), true);
         }
 
+        public void UpdateSunEventTimes(List<AbsoluteTimeMinuteDataPoint> weatherMinutes, List<AbsoluteTimeHourDataPoint> weatherHours, List<AbsoluteTimeDayDataPoint> weatherDays)
+        {
+            foreach (AbsoluteTimeDayDataPoint dayPoint in weatherDays)
+            {
+                foreach (AbsoluteTimeHourDataPoint hourPoint in weatherHours)
+                {
+                    if (dayPoint.LocalTime.DayOfYear == hourPoint.LocalTime.DayOfYear)
+                    {
+                        if (hourPoint.LocalTime < dayPoint.SunriseTime)
+                        {
+                            hourPoint.Sun.SunState = SunState.PreSunrise;
+                            hourPoint.Sun.SunPercent = 0;
+                        }
+                        else if (hourPoint.LocalTime < dayPoint.SunsetTime)
+                        {
+                            hourPoint.Sun.SunState = SunState.SunUp;
+                            hourPoint.Sun.SunPercent = 100;
+                        }
+                        else
+                        {
+                            hourPoint.Sun.SunState = SunState.PostSunset;
+                            hourPoint.Sun.SunPercent = 0;
+                        }
+                    }
+                }
+                foreach (AbsoluteTimeMinuteDataPoint minutePoint in weatherMinutes)
+                {
+                    if (dayPoint.LocalTime.DayOfYear == minutePoint.LocalTime.DayOfYear)
+                    {
+                        if (minutePoint.LocalTime < dayPoint.SunriseTime)
+                        {
+                            minutePoint.Sun.SunState = SunState.PreSunrise;
+                            minutePoint.Sun.SunPercent = 0;
+                        }
+                        else if (minutePoint.LocalTime < dayPoint.SunsetTime)
+                        {
+                            minutePoint.Sun.SunState = SunState.SunUp;
+                            minutePoint.Sun.SunPercent = 100;
+                        }
+                        else
+                        {
+                            minutePoint.Sun.SunState = SunState.PostSunset;
+                            minutePoint.Sun.SunPercent = 0;
+                        }
+                    }
+                }
+            }
+
+        }
+
         /// <summary> Fill in empty data so the chart time axis looks good </summary>
         private void SetEmptyDataPoints()
         {
             RainfallMinutes = new List<AbsoluteTimeMinuteDataPoint>()
                 {
-                    new AbsoluteTimeMinuteDataPoint { Time = DateTime.Now.AddMinutes(0),  PrecipitationProbability = (float)0.0, PrecipitationIntensity = (float)0.0},
-                    new AbsoluteTimeMinuteDataPoint { Time = DateTime.Now.AddMinutes(60), PrecipitationProbability = (float)0.0,  PrecipitationIntensity = (float)0.0}
+                    new AbsoluteTimeMinuteDataPoint { Time = DateTime.Now,  LocalTime = DateTime.Now.ToLocalTime(), PrecipitationProbability = (float)0.0, PrecipitationIntensity = (float)0.0},
+                    new AbsoluteTimeMinuteDataPoint { Time = DateTime.Now.AddMinutes(60), LocalTime = DateTime.Now.ToLocalTime().AddMinutes(60), PrecipitationProbability = (float)0.0,  PrecipitationIntensity = (float)0.0}
+                };
+
+            WeatherHours = new List<AbsoluteTimeHourDataPoint>()
+                {
+                    new AbsoluteTimeHourDataPoint{ Time = DateTime.Now,  LocalTime = DateTime.Now.ToLocalTime().AddMinutes(0)},
+                    new AbsoluteTimeHourDataPoint{ Time = DateTime.Now.AddHours(AbsoluteTimeHourDataPoint.FortyEight),  LocalTime = DateTime.Now.ToLocalTime().AddHours(AbsoluteTimeHourDataPoint.FortyEight)}
                 };
         }
 
@@ -349,6 +413,20 @@ namespace DarkWeather
             {
                 weatherHours = value;
                 NotifyPropertyChanged("WeatherHours");
+            }
+        }
+
+        private List<AbsoluteTimeDayDataPoint> weatherDays;
+        public List<AbsoluteTimeDayDataPoint> WeatherDays
+        {
+            get
+            {
+                return weatherDays;
+            }
+            set
+            {
+                weatherDays = value;
+                NotifyPropertyChanged("WeatherDays");
             }
         }
 
