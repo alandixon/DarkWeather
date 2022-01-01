@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DarkWeather"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
-             x:Class="DarkWeather.SettingsPage"
+             x:Class="DarkWeather.AppSettingsPage"
              Title="Settings">
 
     <ContentPage.Resources>
@@ -13,9 +13,9 @@
     </ContentPage.Resources>
 
 
-    <StackLayout Orientation="Vertical" Padding="2" BackgroundColor="White">
+    <!--<StackLayout Orientation="Vertical" Padding="2" BackgroundColor="White">
 
-        <!-- Version -->
+        --><!-- Version --><!--
         <StackLayout Padding="1" BackgroundColor="Gray" >
             <StackLayout Padding="1" BackgroundColor="White">
 
@@ -26,7 +26,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!-- DarkSky details-->
+        --><!-- DarkSky details--><!--
         <StackLayout Padding="1" BackgroundColor="Gray" >
             <StackLayout Padding="1" BackgroundColor="White">
                 <StackLayout Orientation="Horizontal" Padding="2" BackgroundColor="White">
@@ -46,7 +46,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!-- Refresh -->
+        --><!-- Refresh --><!--
         <StackLayout Padding="1" BackgroundColor="Gray" >
             <StackLayout Orientation="Vertical" Padding="1" BackgroundColor="White">
                 <StackLayout Orientation="Horizontal">
@@ -61,7 +61,7 @@
                             <x:String>15 minutes</x:String>
                             <x:String>60 minutes</x:String>
                         </Picker.Items>
-                        <!-- Selecting in xaml only works after binding -->
+                        --><!-- Selecting in xaml only works after binding --><!--
                         <Picker.SelectedIndex>0</Picker.SelectedIndex>
                     </Picker>
                     <Button Text="Refresh now" IsEnabled="{Binding ApiKeyPresent}" Clicked="RefreshClicked" HorizontalOptions="EndAndExpand" WidthRequest = "120" HeightRequest = "50" />
@@ -70,12 +70,12 @@
                     <Label Text="" VerticalTextAlignment="Center" MinimumWidthRequest="200" HorizontalOptions="StartAndExpand"/>
                     <Label Text="API key missing" IsVisible="{Binding ApiKeyPresent, Converter={StaticResource boolInverter}}" TextColor="Red"
                             VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
-                    <!--<Button Text="Refresh" IsEnabled="{Binding ApiKeyPresent}" Clicked="RefreshClicked" HorizontalOptions="EndAndExpand" WidthRequest = "120" HeightRequest = "50" />-->
+                    --><!--<Button Text="Refresh" IsEnabled="{Binding ApiKeyPresent}" Clicked="RefreshClicked" HorizontalOptions="EndAndExpand" WidthRequest = "120" HeightRequest = "50" />--><!--
                 </StackLayout>
             </StackLayout>
         </StackLayout>
 
-        <!-- Location -->
+        --><!-- Location --><!--
         <StackLayout Padding="1" BackgroundColor="Gray" >
             <StackLayout Orientation="Vertical" Padding="1" BackgroundColor="White">
                 <StackLayout Orientation="Horizontal">
@@ -85,6 +85,7 @@
                 </StackLayout>
             </StackLayout>
         </StackLayout>
-    </StackLayout>
+        
+    </StackLayout>-->
     
 </ContentPage>
