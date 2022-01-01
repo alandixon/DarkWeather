@@ -8,7 +8,7 @@
     
     <ContentPage.Content>
 
-        <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="LightSteelBlue">
+        <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Start" BackgroundColor="LightSteelBlue">
 
             <StackLayout Margin="4,4,4,0" Padding="1" BackgroundColor="DarkGray" >
                 <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
