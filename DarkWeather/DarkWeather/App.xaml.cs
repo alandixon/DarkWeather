@@ -25,6 +25,8 @@ namespace DarkWeather
         {
             InitializeComponent();
 
+            Model = new Model();
+
             HomePage = new HomePage();
             FortyEightHourPage = new FortyEightHourPage();
             AppSettingsPage = new AppSettingsPage();

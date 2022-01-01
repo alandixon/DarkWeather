@@ -81,6 +81,7 @@
     <Compile Include="Utilities\Factory.cs" />
     <Compile Include="Version\IVersion.cs" />
     <Compile Include="ViewModels\FortyEightHourPageVM.cs" />
+    <Compile Include="ViewModels\PageVM.cs" />
     <Compile Include="ViewModels\HomePageVM.cs" />
     <Compile Include="Weather\AbsoluteTimeHourDataPoint.cs" />
     <Compile Include="Weather\AbsoluteTimeMinuteDataPoint.cs" />

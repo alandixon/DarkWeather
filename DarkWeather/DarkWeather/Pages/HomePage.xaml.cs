@@ -9,21 +9,13 @@ namespace DarkWeather
         private ILog Log = DependencyService.Get<ILog>();
         private string logTag = typeof(HomePage).FullName;
 
-        private Model model;
-
         public HomePage()
         {
             InitializeComponent();
-
-            App.Model = new Model();
-            BindingContext = App.Model;
-
-            //Global.HomePage = this;
-            //Global.AppSettingsPage = new AppSettingsPage();
-            //Global.FortyEightHourPage = new FortyEightHourPage();
+            App.HomePageVM = new HomePageVM(App.Model);
+            BindingContext = App.HomePageVM;
 
             Log.Debug(logTag, "HomePage started", true);
-
         }
 
         private void AppSettings_Clicked(object sender, EventArgs e)

@@ -16,7 +16,6 @@ namespace DarkWeather
             BindingContext = App.FortyEightHourPageVM;
 
             Log.Debug(logTag, "FortyEightHourPage started", true);
-
         }
 
         private void AppSettings_Clicked(object sender, EventArgs e)
