@@ -12,6 +12,7 @@ namespace DarkWeather.Weather
         public float TemperatureF { get; set; }
         public float TemperatureC { get; set; }
         public float CloudCover { get; set; }
+        public float Sun { get { return 100; }  }
 
 
         //According to DarkSky, this can be one of "rain", "snow", or "sleet" or undefined if precipIntensity is zero
