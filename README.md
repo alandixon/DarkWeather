@@ -19,6 +19,23 @@ One hour: lots of rain           |  48 hour: starts rainy and then clears up
 * Google Play Services must be running on the device (needed for location).
 In an Emulator, this typically means setting CPU/ABI to include the Google APIs
 
+
+## Extra libraries
+
+The following extra libraries are used
+
+| Lib | Function |
+:-------------------------:|:-------------------------:
+| [SyncFusion Xamarin Forms](https://help.syncfusion.com/xamarin) - [Community license](https://www.syncfusion.com/products/communitylicense)| UI components |
+| [DarkSky API](https://github.com/jcheng31/DarkSkyApi) | DarkSky Access |
+| [PCLAppConfig](https://github.com/mrbrl/PCLAppConfig) | Config |
+| [PCLStorage](https://github.com/dsplaisted/PCLStorage) | Folder and file access |
+| [PCLCrypto](https://github.com/AArnott/PCLCrypto) | Crypto/ Security |
+| [SQLite-net pcl](https://github.com/praeclarum/sqlite-net) | Database |
+| [SQLitePCL.raw](https://github.com/ericsink/SQLitePCL.raw) | Low level Database |
+
+
+
 ## Further development
 
 * Display week data. Currently we only do hour and 48 hour.
