@@ -26,6 +26,7 @@ namespace DarkWeather
 
         private void OneHour_Clicked(object sender, EventArgs e)
         {
+            App.RootPage.Master = App.HomeMenuPage;
             App.RootPage.Detail = App.HomeNavigationPage;
         }
     }

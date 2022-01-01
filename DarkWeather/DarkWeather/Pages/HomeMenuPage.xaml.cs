@@ -11,7 +11,7 @@ namespace DarkWeather
         {
             Title = "Menu";
             InitializeComponent();
-            BindingContext = App.Model;
+            BindingContext = App.HomePageVM;
         }
 
         private void Done_Clicked(object sender, EventArgs e)

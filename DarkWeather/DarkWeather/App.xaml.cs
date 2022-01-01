@@ -6,8 +6,8 @@ namespace DarkWeather
     {
         public static RootPage RootPage { get; set; }
 
-        private static HomeMenuPage HomeMenuPage { get; set; }
-        private static FortyEightHourMenuPage FortyEightHourMenuPage { get; set; }
+        public static HomeMenuPage HomeMenuPage { get; set; }
+        public static FortyEightHourMenuPage FortyEightHourMenuPage { get; set; }
 
         public static NavigationPage HomeNavigationPage { get; private set; }
         public static NavigationPage FortyEightHourNavigationPage { get; private set; }

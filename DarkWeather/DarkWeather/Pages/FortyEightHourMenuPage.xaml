@@ -35,7 +35,7 @@
                     <StackLayout Orientation="Vertical" Spacing="1" Padding="1">
                         <Label Margin="3,0" Text="Temp °C" TextColor="Red" Font="Bold" />
                         <Label Margin="3,0" Text="Apparent" TextColor="Orange" Font="Bold" />
-                        <Switch IsToggled="{Binding TempEnabledx}" HorizontalOptions="Start" />
+                        <Switch IsToggled="{Binding TempEnabled}" HorizontalOptions="Start" />
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
