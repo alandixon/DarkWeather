@@ -139,15 +139,6 @@
     <Reference Include="Syncfusion.SfChart.XForms.Android">
       <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\15.1.0.33\Xamarin\lib\android\Syncfusion.SfChart.XForms.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfNavigationDrawer.Android">
-      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\15.1.0.33\Xamarin\lib\android\Syncfusion.SfNavigationDrawer.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNavigationDrawer.XForms">
-      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\15.1.0.33\Xamarin\lib\android\Syncfusion.SfNavigationDrawer.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNavigationDrawer.XForms.Android">
-      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\15.1.0.33\Xamarin\lib\android\Syncfusion.SfNavigationDrawer.XForms.Android.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
