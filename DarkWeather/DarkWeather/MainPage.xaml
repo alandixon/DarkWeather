@@ -27,8 +27,8 @@
                     <Label Margin="25,0" Text="{Binding DataLabelText}" Font="Bold" HorizontalOptions="End" />
                 </StackLayout>
                 <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Fill">
-                    <Label Margin="25,0" Text="Probability" TextColor="LightBlue" Font="Bold" HorizontalOptions="Start" />
-                    <Label Margin="25,0" Text="Intensity" TextColor="Blue" Font="Bold" HorizontalOptions="End"/>
+                    <Label Margin="25,0" Text="Likelihood" TextColor="DodgerBlue" Font="Bold" HorizontalOptions="Start" />
+                    <Label Margin="25,0" Text="Intensity" TextColor="MediumBlue" Font="Bold" HorizontalOptions="End"/>
                 </StackLayout>
                 <chart:SfChart Grid.Row="2" >
                 <chart:SfChart.PrimaryAxis>
@@ -42,55 +42,55 @@
                     <chart:NumericalAxis Minimum="0" Maximum="1" IsInversed="true">
                 </chart:NumericalAxis>
             </chart:SfChart.SecondaryAxis>
-                <chart:SplineAreaSeries Color="LightBlue" ItemsSource="{Binding RainfallMinutes}" XBindingPath="Time" YBindingPath="PrecipitationProbability"/>
-                <chart:SplineSeries Color="Blue" ItemsSource="{Binding RainfallMinutes}" XBindingPath="Time" YBindingPath="PrecipitationIntensity"/>
+                <chart:SplineAreaSeries Color="DodgerBlue" ItemsSource="{Binding RainfallMinutes}" XBindingPath="Time" YBindingPath="PrecipitationProbability"/>
+                    <chart:SplineSeries Color="MediumBlue" ItemsSource="{Binding RainfallMinutes}" XBindingPath="Time" YBindingPath="PrecipitationIntensity"/>
             </chart:SfChart>
-                <Label Grid.Row="3" Margin="25,0" Text="Bottom label text" Font="Bold" HorizontalOptions="Start" />
+            <Label Grid.Row="3" Margin="25,0" Text="" Font="Bold" HorizontalOptions="Start" />
         </Grid>
     </ContentPage>
 
     <ContentPage Title="48 hour">
-            <ContentPage.Resources>
-                <ResourceDictionary>
-                    <local:InverseBooleanConverter x:Key="boolInverter"/>
-                </ResourceDictionary>
-            </ContentPage.Resources>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Fill">
-                    <Label Margin="25,0" Text="48 hour weather" Font="Bold" HorizontalOptions="Start" />
-                    <Label Margin="25,0" Text="{Binding DataLabelText}" Font="Bold" HorizontalOptions="End" />
-                </StackLayout>
-                <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Fill">
-                    <Label Margin="25,0" Text="Probability" TextColor="LightBlue" Font="Bold" HorizontalOptions="Start" />
-                    <Label Margin="25,0" Text="Intensity" TextColor="Blue" Font="Bold" HorizontalOptions="End"/>
-                </StackLayout>
-                <chart:SfChart Grid.Row="2" >
-                    <chart:SfChart.PrimaryAxis>
-                        <chart:DateTimeAxis IntervalType="Hours" Interval="6" >
-                            <chart:DateTimeAxis.LabelStyle>
-                                <chart:ChartAxisLabelStyle LabelFormat = "HH:mm EEE  ."></chart:ChartAxisLabelStyle>
-                            </chart:DateTimeAxis.LabelStyle>
-                        </chart:DateTimeAxis>
-                    </chart:SfChart.PrimaryAxis>
-                    <chart:SfChart.SecondaryAxis>
-                        <chart:NumericalAxis Minimum="0" Maximum="1" IsInversed="true">
-                        </chart:NumericalAxis>
-                    </chart:SfChart.SecondaryAxis>
-                    <chart:SplineAreaSeries Color="LightBlue" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationProbability"/>
-                    <chart:SplineSeries Color="Blue" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationIntensity"/>
-                </chart:SfChart>
-                <Label Grid.Row="3" Margin="25,0" Text="Bottom label text" Font="Bold" HorizontalOptions="Start" />
-            </Grid>
-        </ContentPage>
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <local:InverseBooleanConverter x:Key="boolInverter"/>
+            </ResourceDictionary>
+        </ContentPage.Resources>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Fill">
+                <Label Margin="25,0" Text="48 hour weather" Font="Bold" HorizontalOptions="Start" />
+                <Label Margin="25,0" Text="{Binding DataLabelText}" Font="Bold" HorizontalOptions="End" />
+            </StackLayout>
+            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Fill">
+                <Label Margin="25,0" Text="Likelihood" TextColor="DodgerBlue" Font="Bold" HorizontalOptions="Start" />
+                <Label Margin="25,0" Text="Intensity" TextColor="MediumBlue" Font="Bold" HorizontalOptions="End"/>
+            </StackLayout>
+            <chart:SfChart Grid.Row="2" >
+                <chart:SfChart.PrimaryAxis>
+                    <chart:DateTimeAxis IntervalType="Hours" Interval="12" >
+                        <chart:DateTimeAxis.LabelStyle>
+                            <chart:ChartAxisLabelStyle LabelFormat = "HH:mm EEE"></chart:ChartAxisLabelStyle>
+                        </chart:DateTimeAxis.LabelStyle>
+                    </chart:DateTimeAxis>
+                </chart:SfChart.PrimaryAxis>
+                <chart:SfChart.SecondaryAxis>
+                    <chart:NumericalAxis Minimum="0" Maximum="1" IsInversed="true">
+                    </chart:NumericalAxis>
+                </chart:SfChart.SecondaryAxis>
+                <chart:SplineAreaSeries Color="DodgerBlue" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationProbability"/>
+                <chart:SplineSeries Color="MediumBlue" ItemsSource="{Binding WeatherHours}" XBindingPath="Time" YBindingPath="PrecipitationIntensity"/>
+            </chart:SfChart>
+            <Label Grid.Row="3" Margin="25,0" Text="" Font="Bold" HorizontalOptions="Start" />
+        </Grid>
+    </ContentPage>
 
     <ContentPage Title="Settings">
         <ContentPage.Resources>
@@ -108,7 +108,7 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal" Padding="2" BackgroundColor="White">
               <Label Text="Your DarkSky API:" YAlign="Center"/>
-              <Entry x:Name="apiKey" Placeholder="API key" IsPassword = "true" Text="{Binding ApiKey}" TextChanged="ApiKeyChanged" WidthRequest="120"/>
+                            <Entry x:Name="apiKey" Placeholder="API key" IsPassword = "true" Text="{Binding ApiKey}" TextChanged="ApiKeyChanged" WidthRequest="120" BackgroundColor="PaleTurquoise"/>
               <Button Text="Save" Clicked="SaveApiKeyClicked" HorizontalOptions="LayoutOptions.Center" WidthRequest = "120" HeightRequest = "50" IsEnabled="{Binding ApiKeyHasChanged}"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal" Padding="2" BackgroundColor="White">
@@ -123,19 +123,27 @@
         <StackLayout Padding="1" BackgroundColor="Gray" >
             <StackLayout Orientation="Vertical" Padding="1" BackgroundColor="White">
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="API calls made since app start:" YAlign="Center"/>
+                    <Label Text="API calls made today:" YAlign="Center"/>
                     <Label Text="{Binding ApiCallsMade}" YAlign="Center"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Auto refresh rate:" YAlign="Center"/>
-                    <Label Text="SyncFusion selector here" YAlign="Center"/>
+                    <Picker x:Name="RefreshDelayPicker" BackgroundColor="PaleTurquoise" HorizontalOptions="FillAndExpand" SelectedIndexChanged="RefreshDelayPicker_SelectedIndexChanged">
+                        <Picker.Items>
+                            <x:String>5 minutes</x:String>
+                            <x:String>15 minutes</x:String>
+                            <x:String>60 minutes</x:String>
+                        </Picker.Items>
+                        <!-- Selecting in xaml only works after binding -->
+                        <Picker.SelectedIndex>0</Picker.SelectedIndex>
+                    </Picker>
+                    <Button Text="Refresh now" IsEnabled="{Binding ApiKeyPresent}" Clicked="RefreshClicked" HorizontalOptions="EndAndExpand" WidthRequest = "120" HeightRequest = "50" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="" VerticalTextAlignment="Center" MinimumWidthRequest="200" HorizontalOptions="StartAndExpand"/>
                     <Label Text="API key missing" IsVisible="{Binding ApiKeyPresent, Converter={StaticResource boolInverter}}" TextColor="Red"
-                VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
-                    <Button Text="Refresh" IsEnabled="{Binding ApiKeyPresent}" Clicked="RefreshClicked" HorizontalOptions="EndAndExpand"
-                WidthRequest = "120" HeightRequest = "50" />
+                        VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                    <!--<Button Text="Refresh" IsEnabled="{Binding ApiKeyPresent}" Clicked="RefreshClicked" HorizontalOptions="EndAndExpand" WidthRequest = "120" HeightRequest = "50" />-->
                 </StackLayout>
             </StackLayout>
         </StackLayout>
