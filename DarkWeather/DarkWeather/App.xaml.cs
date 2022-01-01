@@ -1,18 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace DarkWeather
 {
     public partial class App : Application
     {
+        public static NavigationPage NavigationPage { get; private set; }
+        private static RootPage RootPage;
+
+        public static bool MenuIsPresented
+        {
+            get
+            {
+                return RootPage.IsPresented;
+            }
+            set
+            {
+                RootPage.IsPresented = value;
+            }
+        }
+
+
+
         public App()
         {
+            //InitializeComponent();
+            //MainPage = new NavigationPage(new HomePage());
+
+
             InitializeComponent();
-            MainPage = new NavigationPage(new OneHourPage());
+            var menuPage = new MenuPage();
+            NavigationPage = new NavigationPage(new HomePage());
+            RootPage = new RootPage();
+            RootPage.Master = menuPage;
+            RootPage.Detail = NavigationPage;
+            MainPage = RootPage;
+
         }
 
         protected override void OnStart()

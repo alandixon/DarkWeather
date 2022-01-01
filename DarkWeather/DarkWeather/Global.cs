@@ -12,7 +12,7 @@
         // Location updates instantiation
         public static LocationDelegate updateLocation;
 
-        public static OneHourPage OneHourPage { get; set; }
+        public static HomePage HomePage { get; set; }
         public static AppSettingsPage AppSettingsPage { get; set; }
         public static FortyEightHourPage FortyEightHourPage { get; set; }
 
