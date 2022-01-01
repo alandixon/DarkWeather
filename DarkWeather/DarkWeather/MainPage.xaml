@@ -122,67 +122,80 @@
                 <local:InverseBooleanConverter x:Key="boolInverter"/>
             </ResourceDictionary>
         </ContentPage.Resources>
+        
         <StackLayout Orientation="Vertical" Padding="2" BackgroundColor="White">
-        <!-- DarkSky details-->
-        <StackLayout Padding="1" BackgroundColor="Gray" >
-          <StackLayout Padding="1" BackgroundColor="White">
-            <StackLayout Orientation="Horizontal" Padding="2" BackgroundColor="White">
-              <Label Text="Powered by Dark Sky: " />
-              <Label Text="https://darksky.net/poweredby/" x:Name="poweredByLabel"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" Padding="2" BackgroundColor="White">
-              <Label Text="Your DarkSky API:" YAlign="Center"/>
-                            <Entry x:Name="apiKey" Placeholder="API key" IsPassword = "true" Text="{Binding ApiKey}" TextChanged="ApiKeyChanged" WidthRequest="120" BackgroundColor="PaleTurquoise"/>
-              <Button Text="Save" Clicked="SaveApiKeyClicked" HorizontalOptions="LayoutOptions.Center" WidthRequest = "120" HeightRequest = "50" IsEnabled="{Binding ApiKeyHasChanged}"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" Padding="2" BackgroundColor="White">
-              <Label Text="Note from DarkSky FAQ: " />
-              <Label Text="https://darksky.net/dev/docs/faq" x:Name="faqLabel"/>
-            </StackLayout>
-            <Label LineBreakMode="WordWrap" Text="Your end-users should not sign up for Dark Sky API keys: the API key should be associated with your app or service, not your users."/>
-          </StackLayout>
-        </StackLayout>
 
-        <!-- Refresh -->
-        <StackLayout Padding="1" BackgroundColor="Gray" >
-            <StackLayout Orientation="Vertical" Padding="1" BackgroundColor="White">
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="API calls made today:" YAlign="Center"/>
-                    <Label Text="{Binding ApiCallsMade}" YAlign="Center"/>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Auto refresh rate:" YAlign="Center"/>
-                    <Picker x:Name="RefreshDelayPicker" BackgroundColor="PaleTurquoise" HorizontalOptions="FillAndExpand" SelectedIndexChanged="RefreshDelayPicker_SelectedIndexChanged">
-                        <Picker.Items>
-                            <x:String>5 minutes</x:String>
-                            <x:String>15 minutes</x:String>
-                            <x:String>60 minutes</x:String>
-                        </Picker.Items>
-                        <!-- Selecting in xaml only works after binding -->
-                        <Picker.SelectedIndex>0</Picker.SelectedIndex>
-                    </Picker>
-                    <Button Text="Refresh now" IsEnabled="{Binding ApiKeyPresent}" Clicked="RefreshClicked" HorizontalOptions="EndAndExpand" WidthRequest = "120" HeightRequest = "50" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="" VerticalTextAlignment="Center" MinimumWidthRequest="200" HorizontalOptions="StartAndExpand"/>
-                    <Label Text="API key missing" IsVisible="{Binding ApiKeyPresent, Converter={StaticResource boolInverter}}" TextColor="Red"
-                        VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
-                    <!--<Button Text="Refresh" IsEnabled="{Binding ApiKeyPresent}" Clicked="RefreshClicked" HorizontalOptions="EndAndExpand" WidthRequest = "120" HeightRequest = "50" />-->
-                </StackLayout>
-            </StackLayout>
-        </StackLayout>
+            <!-- Version -->
+            <StackLayout Padding="1" BackgroundColor="Gray" >
+                <StackLayout Padding="1" BackgroundColor="White">
 
-        <!-- Location -->
-        <StackLayout Padding="1" BackgroundColor="Gray" >
-            <StackLayout Orientation="Vertical" Padding="1" BackgroundColor="White">
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Location lat/long: " Font="Bold" YAlign="Center"/>
-                    <Label Text="{Binding Location.Latitude}" YAlign="Center"/>
-                    <Label Text="{Binding Location.Longitude}" YAlign="Center"/>
+                    <StackLayout Orientation="Horizontal" Padding="2" BackgroundColor="White">
+                        <Label Text="DarkWeather version " />
+                        <Label Text="{Binding AppVersionName}"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+            <!-- DarkSky details-->
+            <StackLayout Padding="1" BackgroundColor="Gray" >
+              <StackLayout Padding="1" BackgroundColor="White">
+                <StackLayout Orientation="Horizontal" Padding="2" BackgroundColor="White">
+                    <Label Text="Powered by Dark Sky: " />
+                    <Label Text="https://darksky.net/poweredby/" x:Name="poweredByLabel"/>
+                </StackLayout>
+              <StackLayout Orientation="Horizontal" Padding="2" BackgroundColor="White">
+                  <Label Text="Your DarkSky API:" YAlign="Center"/>
+                                <Entry x:Name="apiKey" Placeholder="API key" IsPassword = "true" Text="{Binding ApiKey}" TextChanged="ApiKeyChanged" WidthRequest="120" BackgroundColor="PaleTurquoise"/>
+                  <Button Text="Save" Clicked="SaveApiKeyClicked" HorizontalOptions="LayoutOptions.Center" WidthRequest = "120" HeightRequest = "50" IsEnabled="{Binding ApiKeyHasChanged}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Padding="2" BackgroundColor="White">
+                  <Label Text="Note from DarkSky FAQ: " />
+                  <Label Text="https://darksky.net/dev/docs/faq" x:Name="faqLabel"/>
+                </StackLayout>
+                <Label LineBreakMode="WordWrap" Text="Your end-users should not sign up for Dark Sky API keys: the API key should be associated with your app or service, not your users."/>
+              </StackLayout>
+            </StackLayout>
+
+            <!-- Refresh -->
+            <StackLayout Padding="1" BackgroundColor="Gray" >
+                <StackLayout Orientation="Vertical" Padding="1" BackgroundColor="White">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="API calls made today:" YAlign="Center"/>
+                        <Label Text="{Binding ApiCallsMade}" YAlign="Center"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Auto refresh rate:" YAlign="Center"/>
+                        <Picker x:Name="RefreshDelayPicker" BackgroundColor="PaleTurquoise" HorizontalOptions="FillAndExpand" SelectedIndexChanged="RefreshDelayPicker_SelectedIndexChanged">
+                            <Picker.Items>
+                                <x:String>5 minutes</x:String>
+                                <x:String>15 minutes</x:String>
+                                <x:String>60 minutes</x:String>
+                            </Picker.Items>
+                            <!-- Selecting in xaml only works after binding -->
+                            <Picker.SelectedIndex>0</Picker.SelectedIndex>
+                        </Picker>
+                        <Button Text="Refresh now" IsEnabled="{Binding ApiKeyPresent}" Clicked="RefreshClicked" HorizontalOptions="EndAndExpand" WidthRequest = "120" HeightRequest = "50" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="" VerticalTextAlignment="Center" MinimumWidthRequest="200" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="API key missing" IsVisible="{Binding ApiKeyPresent, Converter={StaticResource boolInverter}}" TextColor="Red"
+                            VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                        <!--<Button Text="Refresh" IsEnabled="{Binding ApiKeyPresent}" Clicked="RefreshClicked" HorizontalOptions="EndAndExpand" WidthRequest = "120" HeightRequest = "50" />-->
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Location -->
+            <StackLayout Padding="1" BackgroundColor="Gray" >
+                <StackLayout Orientation="Vertical" Padding="1" BackgroundColor="White">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Location lat/long: " Font="Bold" YAlign="Center"/>
+                        <Label Text="{Binding Location.Latitude}" YAlign="Center"/>
+                        <Label Text="{Binding Location.Longitude}" YAlign="Center"/>
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
-    </StackLayout>
         
     </ContentPage>
 
