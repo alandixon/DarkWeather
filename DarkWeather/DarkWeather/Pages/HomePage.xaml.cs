@@ -31,38 +31,10 @@ namespace DarkWeather
             Navigation.PushAsync(Global.AppSettingsPage);
         }
 
-        private void Burger_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
         private void FortyEightHour_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(Global.FortyEightHourPage);
+            App.RootPage.Detail = App.FortyEightHourNavigationPage;
         }
-
-        //public void RefreshClicked(object sender, EventArgs args)
-        //{
-        //    model.RefreshFromDarkSky();
-        //}
-
-        //public void SaveApiKeyClicked(object sender, EventArgs args)
-        //{
-        //    model.SaveApiKey(apiKey.Text);
-        //}
-
-        //public void ApiKeyChanged(object sender, EventArgs args)
-        //{
-        //    model.ApiKeyHasChanged = true;
-        //}
-
-        //private void RefreshDelayPicker_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (model != null)
-        //    {
-        //        model.RefreshDelayString = (sender as Picker).SelectedItem.ToString();
-        //    }
-        //}
 
     }
 }
