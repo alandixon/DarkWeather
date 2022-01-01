@@ -23,18 +23,15 @@ namespace DarkWeather
 
         public App()
         {
-            //InitializeComponent();
-            //MainPage = new NavigationPage(new HomePage());
-
-
             InitializeComponent();
-            var menuPage = new MenuPage();
             NavigationPage = new NavigationPage(new HomePage());
             RootPage = new RootPage();
+            var menuPage = new MenuPage();
             RootPage.Master = menuPage;
             RootPage.Detail = NavigationPage;
             MainPage = RootPage;
-
+            // Wire up IsPresented so that the menu page can close itself
+            menuPage.IsPresentedChange += MenuPage_IsPresentedChange;
         }
 
         protected override void OnStart()
@@ -51,5 +48,11 @@ namespace DarkWeather
         {
             // Handle when your app resumes
         }
+
+        private void MenuPage_IsPresentedChange(object sender, bool isPresented)
+        {
+            RootPage.IsPresented = isPresented;
+        }
+
     }
 }
