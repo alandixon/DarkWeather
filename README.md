@@ -2,7 +2,9 @@
 
 An experimental app using the API from https://darksky.net
 
-One hour           |  Forty-eight hour
+The graphics are inverted - the lower the blue goes, the more likely / more intense the rain
+
+One hour: lots of rain           |  48 hour: starts rainy and then clears up 
 :-------------------------:|:-------------------------:
 ![One hour](https://github.com/alandixon/DarkWeather/blob/master/Images/OneHourRainfallExample.JPG)  |  ![48 hour](https://github.com/alandixon/DarkWeather/blob/master/Images/FortyEightHourRainfallExample.JPG)
 
